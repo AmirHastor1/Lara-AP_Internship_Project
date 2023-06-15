@@ -1,0 +1,6 @@
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.DB\bin\Debug\SocialMediaApp.DB.dacpac
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.DB\bin\Debug\SocialMediaApp.DB.dll
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.DB\bin\Debug\SocialMediaApp.DB.pdb
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.sqlproj.AssemblyReference.cache
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.dll
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.pdb

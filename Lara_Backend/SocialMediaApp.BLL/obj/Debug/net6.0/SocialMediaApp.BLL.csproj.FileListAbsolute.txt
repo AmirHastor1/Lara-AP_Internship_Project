@@ -1,0 +1,15 @@
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\bin\Debug\net6.0\SocialMediaApp.BLL.deps.json
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\bin\Debug\net6.0\SocialMediaApp.BLL.dll
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\bin\Debug\net6.0\SocialMediaApp.BLL.pdb
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\bin\Debug\net6.0\SocialMediaApp.DAL.dll
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\bin\Debug\net6.0\SocialMediaApp.DAL.pdb
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.csproj.AssemblyReference.cache
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.AssemblyInfoInputs.cache
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.AssemblyInfo.cs
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.csproj.CoreCompileInputs.cache
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.csproj.CopyComplete
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.dll
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\refint\SocialMediaApp.BLL.dll
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\SocialMediaApp.BLL.pdb
+C:\Users\AmirHastor\source\repos\SocialMediaApp\SocialMediaApp.BLL\obj\Debug\net6.0\ref\SocialMediaApp.BLL.dll
