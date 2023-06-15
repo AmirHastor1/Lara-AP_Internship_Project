@@ -1,0 +1,141 @@
+<div class="messageSender">
+  <div class="messageSender__top">
+    <img class="user__avatar"
+      src="{{imageUrlFor}}"
+      alt="" />
+    <form>
+      <input class="messageSender__input" placeholder="What's on your mind?" type="text" name="postInfoDemo.postMessage" [(ngModel)]="postInfoDemo.postMessage"/>
+      <button style="background-color: turquoise; border: none; border-radius: 10px; color: #333; /* Dark grey */ padding: 15px 32px; cursor: pointer;" (click)="createPost()">Post</button>
+    </form>
+  </div>
+
+  <div class="messageSender__bottom">
+    <div class="messageSender__option">
+      <span style="color: red" class="material-icons"> videocam </span>
+      <h3>Live</h3>
+    </div>
+
+    <div class="messageSender__option">
+      <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="handlerFileInputPost($event)">
+      <label for="imageUpload" style="color: green" class="material-icons">photo_library</label>
+      <h3>Photo</h3>
+    </div>
+
+    <div class="messageSender__option">
+      <span style="color: orange" class="material-icons"> insert_emoticon </span>
+      <h3>Feeling</h3>
+    </div>
+  </div>
+</div>
+<!-- message sender ends -->
+
+
+<div *ngFor="let post of postInfoOfUser">
+  <div *ngIf="post.postImage!='string';else other_content">
+    <!-- post starts -->
+    <div class="post">
+      <div class="post__top">
+        <img class="user__avatar post__avatar"
+          src="{{post.postPersionProfilePicture}}"
+          alt="" />
+        <div class="post__topInfo">
+          <h3>{{post.name}}</h3>
+          <p>{{post.createdDate | date:'dd-MM-yyyy'}}</p>
+        </div>
+        <div *ngIf="is_admin">
+          <button style="background-color: red; margin-left: 470px; border: none; border-radius: 10px; color: #333; /* Dark grey */ padding: 15px 20px; cursor: pointer;color: white;" (click)="deleteThisPost(post)">Delete</button>
+        </div>
+      </div>
+
+      <div class="post__bottom">
+        <p>{{post.postMessage}}</p>
+      </div>
+
+      <div class="post__image">
+        <img
+          src="{{post.postImage}}"
+          alt="" />
+      </div>
+
+      <div class="likesNumber" >
+        <p>{{post.like}} person likes</p>
+      </div>
+
+      <div class="post__options">
+        <div class="post__option" (click)="likeUpdate(post)">
+          <span class="material-icons"> thumb_up </span>
+          <p>Like</p>
+        </div>
+
+        <div class="post__option">
+          <span class="material-icons"> chat_bubble_outline </span>
+          <p>Comment</p>
+        </div>
+
+        <div class="post__option">
+          <span class="material-icons"> near_me </span>
+          <p>Share</p>
+        </div>
+      </div>
+    </div>
+    <!-- post ends -->
+
+  </div>
+
+  <ng-template #other_content>
+    <!-- post starts -->
+    <div class="newChange">
+      <div class="post">
+        <div class="post__top">
+          <img class="user__avatar post__avatar"
+            src="{{post.postPersionProfilePicture}}"
+            alt="" />
+          <div class="post__topInfo">
+            <h3>{{post.name}}</h3>
+            <p>{{post.createdDate | date:'dd-MM-yyyy'}}</p>
+          </div>
+          <div *ngIf="is_admin">
+            <button style="background-color: red; margin-left: 470px; border: none; border-radius: 10px; color: #333; /* Dark grey */ padding: 15px 20px; cursor: pointer;color: white;"(click)="deleteThisPost(post)">Delete</button>
+          </div>
+        </div>
+
+        <div class="post__bottom">
+          <p>{{post.postMessage}}</p>
+        </div>
+
+        <div class="likesNumber">
+          <p> {{post.like}} person like</p>
+        </div>
+
+        <div class="post__options">
+          <div class="post__option" (click)="likeUpdate(post)">
+            <span class="material-icons" > thumb_up </span>
+            <p>Like</p>
+          </div>
+
+          <div class="post__option">
+            <span class="material-icons"> chat_bubble_outline </span>
+            <p>Comment</p>
+          </div>
+
+          <div class="post__option">
+            <span class="material-icons"> near_me </span>
+            <p>Share</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- post ends -->
+  </ng-template>
+</div>
+
+<!-- post starts demo post -->
+<div class="post" *ngIf="postInfoOfUser.length==0">
+
+  <div class="post__image">
+    <img
+      src="../../../assets/images/no_post_found.jpg"
+      alt="" />
+  </div>
+</div>
+<!-- post ends -->
