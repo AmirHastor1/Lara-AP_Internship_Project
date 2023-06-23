@@ -9,7 +9,7 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-    
+    /*
 BEGIN
 
 INSERT INTO [dbo].[User] (UserId,FirstName,LastName,Email)
@@ -19,3 +19,4 @@ INSERT INTO [dbo].[User] (UserId,FirstName,LastName,Email)
 VALUES (newid(),'Kemo','Dzekic','KemoDz@gmail.com')
 
 END
+*/

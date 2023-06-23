@@ -568,11 +568,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
       "projectName": "SocialMediaApp.DAL",
-      "projectPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
+      "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
       "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\obj\\",
+      "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

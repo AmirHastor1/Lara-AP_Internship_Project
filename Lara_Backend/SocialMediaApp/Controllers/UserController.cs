@@ -15,6 +15,37 @@ namespace SocialMediaApp.Controllers
             _userService = userService;
         }
 
+        [HttpPost]
+        [Route("api/register")]
+        public void RegisterUser(UserDTO user)
+        {
+            if (user == null || string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(user.Password))
+                throw new Exception("Invalid request parameters");
+
+            _userService.RegisterUser(user);
+        }
+
+        [HttpPost]
+        [Route("api/login")]
+        public string LoginUser(LoginDTO user)
+        {
+            if (user == null || string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(user.Password))
+                throw new Exception("Invalid request parameters");
+
+            return _userService.LoginUser(user);
+        }
+
+        [HttpPost]
+        [Route("api/logout")]
+        public void LogoutUser([FromBody] string jwt)
+        {
+            if (string.IsNullOrWhiteSpace(jwt))
+                throw new Exception("Invalid request parameters");
+
+            _userService.LogoutUser(jwt);
+        }
+
+        //NON AUTHENTICATION PART
         // GET: api/<MemberController>
         [HttpGet]
         public IEnumerable<UserDTO> GetUsers()

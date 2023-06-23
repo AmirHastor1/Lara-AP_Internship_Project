@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {}
+    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {
+    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
+        "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
         "projectName": "SocialMediaApp.AutoMapperProfile",
-        "projectPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
+        "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
         "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.AutoMapperProfile\\obj\\",
+        "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj"
+              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
+                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj"
               },
-              "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
+              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
               }
             }
           }
@@ -76,14 +76,14 @@
         }
       }
     },
-    "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
+    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
         "projectName": "SocialMediaApp.BLL",
-        "projectPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
+        "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
         "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp.BLL\\obj\\",
+        "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -104,8 +104,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
+              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
               }
             }
           }
@@ -123,6 +123,18 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.31.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.31.0, )"
             }
           },
           "imports": [
@@ -145,14 +157,14 @@
         }
       }
     },
-    "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
+    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
         "projectName": "SocialMediaApp.DAL",
-        "projectPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
+        "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
         "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AmirHastor\\source\\repos\\SocialMediaApp\\SocialMediaApp_DAL\\obj\\",
+        "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -7,6 +7,15 @@
 --**********************************************************************
 
 -- Table dbo.User
+-- Model New Model
+-- Updated 6/23/2023 3:32:04 PM
+-- DDL Generated 6/23/2023 4:12:09 PM
+
+--**********************************************************************
+--	Tables
+--**********************************************************************
+
+-- Table dbo.User
 create table
 	[dbo].[User]
 (
@@ -14,6 +23,10 @@ create table
 	, [FirstName] nvarchar(50) not null
 	, [LastName] nvarchar(50) not null
 	, [Email] nvarchar(50) not null
+	, [PasswordHash] varbinary(max) not null
+	, [PasswordSalt] varbinary(max) not null
+	, [Jwt] nvarchar(max) null
+	, [Expiry] datetime2(7) null
 ,
 constraint [Pk_User_UserId] primary key clustered
 (

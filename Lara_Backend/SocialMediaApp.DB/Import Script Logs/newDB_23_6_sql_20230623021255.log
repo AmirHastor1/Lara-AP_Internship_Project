@@ -1,0 +1,13 @@
+6/23/2023 4:12:55 PM	This log contains information about the import operation of the script 'newDB_23_6.sql' into project 'SocialMediaApp.DB' on computer 'API2494' by user'AmirHastor.
+6/23/2023 4:12:55 PM	Started importing file: C:\Users\AmirHastor\Downloads\newDB_23_6.sql 
+6/23/2023 4:12:55 PM	File name C:\Users\AmirHastor\Downloads\newDB_23_6.sql (size: 1400)
+6/23/2023 4:12:55 PM	Parsing import script
+6/23/2023 4:12:55 PM	Total number of batches in script: 1
+6/23/2023 4:12:55 PM	Total number of statements in script: 3
+6/23/2023 4:12:55 PM	The script was successfully imported into the project.
+6/23/2023 4:12:55 PM	Analyzing schema objects...
+6/23/2023 4:12:55 PM	Scanning project for duplicate elements
+6/23/2023 4:12:55 PM	Element 'User' was merged into the existing script: 'C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\dbo\Tables\User.sql'.
+6/23/2023 4:12:55 PM	Finished duplicate element processing
+6/23/2023 4:12:55 PM	A summary of the import was saved to the following location: C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\Import Script Logs\newDB_23_6_sql_20230623021255.log
+6/23/2023 4:12:55 PM	Click Finish to continue...
