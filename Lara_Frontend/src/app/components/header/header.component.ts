@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 import { LoginInfo } from 'src/app/Models/login.model';
 //import { RequestService } from 'src/app/Service/request.service';
+import { LoginService } from 'src/app/Services/Login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +12,15 @@ import { LoginInfo } from 'src/app/Models/login.model';
 })
 export class HeaderComponent implements OnInit {
 
+
   @Input() loginInfoForHeader : LoginInfo | undefined;
   @Input() requestCount: number = 0;
   @Output() currentPageEmitter : EventEmitter<number> = new EventEmitter();
   @Output() logoutStatusEmitter : EventEmitter<boolean> = new EventEmitter();
   @Output() searchContentEmitter : EventEmitter<LoginInfo[]> = new EventEmitter();
+  token = sessionStorage.getItem('token');
 
+  constructor(private loginService: LoginService, private router: Router) { }
   // this for calling a function multiple times
   /*
 
@@ -63,7 +68,18 @@ export class HeaderComponent implements OnInit {
   }
 
   logOutbuttonClicked(){
-    this.logoutStatusEmitter.emit(true);
+    //this.logoutStatusEmitter.emit(true);
+    this.loginService.logout(this.token!!).subscribe(
+      () => {
+        console.log('Logout in successfully:');
+        this.router.navigate(['/login']);
+      },
+      error => {
+        // Display error message to the user
+        //this.token
+        alert(error + this.token);
+      }
+    );
   }
 
   // this is for searching

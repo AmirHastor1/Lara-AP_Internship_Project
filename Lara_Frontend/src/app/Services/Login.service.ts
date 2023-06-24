@@ -40,6 +40,51 @@ export class LoginService {
         })
       );
   }
+  logout(jwt: string): Observable<void> {
+    /*if (!jwt || jwt.trim() === '') {
+      throw new Error('Invalid JWT');
+    }*/
+  
+    const body = `"${jwt}"`;
+    console.log('Logout Request body:', body);
+  
+    return this.http.post<void>(`${this.baseUrl}/api/logout`, body, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).pipe(
+      tap(() => {
+        console.log('Logout successful');
+      }),
+      catchError(error => {
+        console.log('Logout Error:', error);
+        return throwError('Logout failed. Please try again.');
+      })
+    );
+  }
+/*
+  logout(token: string): Observable<void> {
+    const body = '"'+token+'"'; // The token is already a string, no need to wrap it in double quotes
+    console.log('Logout Request body:', body);
+  
+    return this.http.post<void>(`${this.baseUrl}/api/logout`, body).pipe(
+      tap(() => {
+        console.log('Logout successful');
+      }),
+      catchError(error => {
+        let errorMessage = 'Logout error';
+  
+        if (error.status === 200) {
+          // If the response status is 200, consider it a successful logout
+          errorMessage = 'Logout was successful, but an error occurred while processing the response.';
+        }
+  
+        console.log('Logout Error:', error);
+        return throwError(errorMessage);
+      })
+    );
+  }
+  */
 
   getUserDetails(email: string): Observable<UserDetails> {
     const params = new HttpParams().set('email', email); // Create query parameters with the email
