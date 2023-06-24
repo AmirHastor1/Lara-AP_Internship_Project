@@ -14,3 +14,13 @@ C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\ob
 C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\predeploy.sql
 C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.dll
 C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.pdb
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\bin\Debug\SocialMediaApp.DB.dacpac
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\bin\Debug\SocialMediaApp.DB.dll
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\bin\Debug\SocialMediaApp.DB.pdb
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.sqlproj.AssemblyReference.cache
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.dll
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.pdb
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\Model.xml
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\refactor.xml
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\postdeploy.sql
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\predeploy.sql

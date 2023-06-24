@@ -20,7 +20,19 @@ namespace SocialMediaApp.Controllers
         public void RegisterUser(UserDTO user)
         {
             if (user == null || string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(user.Password))
+            {
+                Console.WriteLine(user.Email + " " + user.Password);
                 throw new Exception("Invalid request parameters");
+            }
+            if (string.IsNullOrWhiteSpace(user.Email))
+            {
+                Console.WriteLine(user.Email + " " + user.Password);
+                throw new Exception("Invalid request parameters");
+            }
+            if (string.IsNullOrWhiteSpace(user.Password)) { 
+                Console.WriteLine(user.Email + " " + user.Password);
+                throw new Exception("Invalid request parameters");
+            }
 
             _userService.RegisterUser(user);
         }
@@ -62,13 +74,13 @@ namespace SocialMediaApp.Controllers
             }
             return _userService.GetUser(userId);
         }
-
+        /*
         [HttpPost]
         public UserDTO Post([FromBody] UserDTO newUser)
         {
-            return _userService.AddNewUser(newUser.FirstName, newUser.LastName, newUser.Email);
+            //return _userService.AddNewUser(newUser.FirstName, newUser.LastName, newUser.Email);
         }
-
+        */
         [HttpDelete("{userId}")]
         public void Delete(Guid userId)
         {

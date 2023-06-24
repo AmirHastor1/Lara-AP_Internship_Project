@@ -33,7 +33,7 @@ namespace SocialMediaApp.BLL.Services
             _mapper = mapper;
             _config = config;
         }
-
+        /*
         public UserDTO AddNewUser(string FirstName, string LastName, string Email)
         {
             var user = _userRepository.AddNewUser(FirstName, LastName, Email);
@@ -45,6 +45,7 @@ namespace SocialMediaApp.BLL.Services
             };
             return convertedUser;
         }
+        */
 
         public string LoginUser(LoginDTO user)
         {
@@ -68,7 +69,7 @@ namespace SocialMediaApp.BLL.Services
 
             CreatePasswordHash(user.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            _userRepository.RegisterUser(user.FirstName, user.LastName,user.Email, passwordHash, passwordSalt);
+            _userRepository.RegisterUser(user.Username,user.Email, passwordHash, passwordSalt);
         }
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

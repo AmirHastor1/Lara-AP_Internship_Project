@@ -1,3 +1,4 @@
+// login.component.ts
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LoginInfo } from 'src/app/Models/login.model';
 import { LoginService } from 'src/app/Service/Login.service';
@@ -8,48 +9,69 @@ import { LoginService } from 'src/app/Service/Login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginInfo: LoginInfo[] = [];
+  email: string = '';
+  password: string = '';
+  username: string = '';
 
-  // loginInfo will store all the users information
-  loginInfo : LoginInfo[] = [];
-  // this variable is for Email Address
-  email : any;
-  password: any;
+  @Output() loginSuccess: EventEmitter<LoginInfo> = new EventEmitter();
 
-  @Output() loginSuccess : EventEmitter<LoginInfo>= new EventEmitter();
-
-  constructor( private loginService: LoginService) { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.getAllLoginInfo();
+    //this.getAllLoginInfo();
   }
 
-  getAllLoginInfo() {
+  /*getAllLoginInfo() {
     this.loginService.getAllLoginInfo().subscribe(response => {
-      this.loginInfo = response; });
-  }
+      this.loginInfo = response;
+    });
+  }*/
 
-  loginButtonMain(){
-
-    var flag = 1;
-    var index = -1;
-
-    for (var i=0; i < this.loginInfo.length; i++) {
-      if (this.loginInfo[i].emailAddress == this.email && this.loginInfo[i].password == this.password) {
-        flag = 0;
-        index = i;
-        break;
-      }
-    }
-    if (flag){
+  loginButtonMain() {
+    if (!this.email || !this.password) {
       alert("Please enter your email address and password correctly!");
-    }
-    else {
-      this.loginSuccess.emit(this.loginInfo[index]);
+      return;
     }
 
-    this.email='';
-    this.password='';
+    this.loginService.login(this.email, this.password).subscribe(
+      token => {
+        // Save the JWT token for later use (e.g., in local storage)
+        console.log('Logged in successfully:', token);
+        // Emit the login success event
+       // this.loginSuccess.emit({ email: this.email, password: this.password });
+      },
+      error => {
+        // Display error message to the user
+        alert(error);
+      }
+    );
+
+    this.email = '';
+    this.password = '';
   }
+
+  registerButtonMain() {
+    // Validate loginInfoPerson properties here before registering
+    // ...
+
+    this.loginService.register({
+      username: this.username,
+      email: this.email,
+      password: this.password
+    }).subscribe(
+      () => {
+        // Registration success, perform any additional actions if needed
+        console.log('Registration successful');
+      },
+      error => {
+        // Display error message to the user
+        alert(error);
+      }
+    );
+  }
+
+  
 
   // for registertion 
   registerCheck : number = 1;
@@ -60,72 +82,4 @@ export class LoginComponent implements OnInit {
   loginButton(){
     this.registerCheck = 1;
   }
-
-  // for register button click
-  loginInfoPerson : LoginInfo = {
-    id : "",
-    emailAddress : "",
-    name : "",
-    password : "",
-    profilePicture : "../../../assets/images/Avater_profile_picture.png"
-  }
-  registerButtonMain(){
-
-    var flag = 0;
-
-    if (this.loginInfoPerson.emailAddress == ""){
-      alert('Please enter your email address');
-      return;
-    }
-    else if (this.loginInfoPerson.name == ""){
-      alert('Please enter your name');
-      return;
-    }
-    else if (this.loginInfoPerson.password == "" || this.loginInfoPerson.password.length <8){
-      alert('Please enter minimum 8 length password');
-      return;
-    }
-
-    for (var i=0;i<this.loginInfoPerson.emailAddress.length;i++) {
-      if (this.loginInfoPerson.emailAddress[i] == '@'){
-        var email = "";
-        for (var j=i+1;j<this.loginInfoPerson.emailAddress.length;j++) {
-          email+= this.loginInfoPerson.emailAddress[j];
-        }
-        if (email == "gmail.com"){}
-        else {
-          alert("Please enter a valid email address");
-          return;
-        }
-        break;
-      }
-    }
-    
-    for (var i  = 0; i < this.loginInfo.length; i++) {
-      if (this.loginInfo[i].emailAddress === this.loginInfoPerson.emailAddress){
-        flag = 1;
-      }
-    }
-    if (flag){
-      alert("This Email Address is already in use");
-    }
-    else {
-      this.loginService.addUser(this.loginInfoPerson).subscribe(response => {
-        this.loginSuccess.emit(response);
-      });
-    }
-  }
-
-  fileToUpload : File | undefined ;
-
-  handlerFileInput(event: any){
-    this.fileToUpload = event.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (event:any) =>{
-      this.loginInfoPerson.profilePicture = event.target.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);
-  }
-
 }
-

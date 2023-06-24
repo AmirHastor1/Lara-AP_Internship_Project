@@ -16,12 +16,20 @@
 --**********************************************************************
 
 -- Table dbo.User
+-- Model New Model
+-- Updated 6/24/2023 1:04:53 AM
+-- DDL Generated 6/24/2023 1:04:55 AM
+
+--**********************************************************************
+--	Tables
+--**********************************************************************
+
+-- Table dbo.User
 create table
 	[dbo].[User]
 (
 	[UserId] uniqueidentifier not null
-	, [FirstName] nvarchar(50) not null
-	, [LastName] nvarchar(50) not null
+	, [Username] nvarchar(50) not null
 	, [Email] nvarchar(50) not null
 	, [PasswordHash] varbinary(max) not null
 	, [PasswordSalt] varbinary(max) not null

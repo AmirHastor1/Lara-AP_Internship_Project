@@ -11,6 +11,7 @@ import { LoginService } from './Service/Login.service';
 export class AppComponent implements OnInit {
 
   ngOnInit(): void {
+    /*
     // this.loginInfoPerson = JSON.parse(sessionStorage.getItem('userDetails')|| '{}') as LoginInfo;
     // if (this.loginInfoPerson.id) this.loginCode = 0;
 
@@ -72,5 +73,7 @@ export class AppComponent implements OnInit {
       sessionStorage.clear();
       this.cookieSerive.deleteAll();
     }
+    */
   }
+  
 }

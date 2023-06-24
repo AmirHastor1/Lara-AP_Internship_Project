@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj": {}
+    "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {
+    "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
+        "projectUniqueName": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
         "projectName": "SocialMediaApp.AutoMapperProfile",
-        "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
-        "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\obj\\",
+        "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj",
+        "packagesPath": "C:\\Users\\amiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AmirHastor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\amiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj"
+              "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
+                "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj"
               },
-              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
+              "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
               }
             }
           }
@@ -72,25 +68,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
+    "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
         "projectName": "SocialMediaApp.BLL",
-        "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
-        "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\obj\\",
+        "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj",
+        "packagesPath": "C:\\Users\\amiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AmirHastor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\amiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -104,8 +96,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
+              "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
               }
             }
           }
@@ -153,25 +145,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj": {
+    "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj",
+        "projectUniqueName": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj",
         "projectName": "SocialMediaApp",
-        "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj",
-        "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\obj\\",
+        "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\SocialMediaApp.csproj",
+        "packagesPath": "C:\\Users\\amiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AmirHastor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\amiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -179,20 +167,21 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj"
+              "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj": {
+                "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.AutoMapperProfile\\SocialMediaApp.AutoMapperProfile.csproj"
               },
-              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj"
+              "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj": {
+                "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp.BLL\\SocialMediaApp.BLL.csproj"
               },
-              "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
-                "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
+              "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj"
               }
             }
           }
@@ -214,6 +203,10 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.16, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -247,25 +240,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
+    "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
         "projectName": "SocialMediaApp.DAL",
-        "projectPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
-        "packagesPath": "C:\\Users\\AmirHastor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AmirHastor\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\obj\\",
+        "projectPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\SocialMediaApp.DAL.csproj",
+        "packagesPath": "C:\\Users\\amiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amiro\\Desktop\\AP_lab_projekat\\Lara-AP_Internship_Project\\Lara_Backend\\SocialMediaApp_DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AmirHastor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\amiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -312,7 +301,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

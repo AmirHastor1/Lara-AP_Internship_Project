@@ -7,9 +7,9 @@ namespace SocialMediaApp.DAL.Interfaces
         IEnumerable<User> GetUsers();
 
         User GetUser(Guid userId);
-        User AddNewUser(string FirstName, string LastName, string Email);
+        User AddNewUser(string Username, string Email);
         void DeleteUser(Guid userId);
-        void RegisterUser(string firstName, string lastName,string email, byte[] passwordHash, byte[] passwordSalt);
+        void RegisterUser(string Username, string email, byte[] passwordHash, byte[] passwordSalt);
         bool DoesUserExist(string email);
         User? GetUser(string email);
         void InitiateToken(User user, string jwt, DateTime expiry);

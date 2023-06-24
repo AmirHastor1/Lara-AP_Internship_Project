@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="SocialMediaApp.DB.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\AMIRHASTOR\LARA-AP_INTERNSHIP_PROJECT\LARA_BACKEND\SOCIALMEDIAAPP.DB\OBJ\DEBUG\SOCIALMEDIAAPP.DB.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\AMIRO\DESKTOP\AP_LAB_PROJEKAT\LARA-AP_INTERNSHIP_PROJECT\LARA_BACKEND\SOCIALMEDIAAPP.DB\OBJ\DEBUG\SOCIALMEDIAAPP.DB.DLL" />
 			<Metadata Name="AssemblyName" Value="SocialMediaApp.DB" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\obj\Debug\SocialMediaApp.DB.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -124,24 +124,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[FirstName]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Length" Value="50" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[LastName]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[Username]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>

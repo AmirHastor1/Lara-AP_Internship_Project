@@ -22,3 +22,15 @@ C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\o
 C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\refint\SocialMediaApp.DAL.dll
 C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.pdb
 C:\Users\AmirHastor\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\ref\SocialMediaApp.DAL.dll
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\bin\Debug\net6.0\SocialMediaApp.DAL.deps.json
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\bin\Debug\net6.0\SocialMediaApp.DAL.dll
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\bin\Debug\net6.0\SocialMediaApp.DAL.pdb
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.csproj.AssemblyReference.cache
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.AssemblyInfoInputs.cache
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.AssemblyInfo.cs
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.csproj.CoreCompileInputs.cache
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.dll
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\refint\SocialMediaApp.DAL.dll
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\SocialMediaApp.DAL.pdb
+C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp_DAL\obj\Debug\net6.0\ref\SocialMediaApp.DAL.dll

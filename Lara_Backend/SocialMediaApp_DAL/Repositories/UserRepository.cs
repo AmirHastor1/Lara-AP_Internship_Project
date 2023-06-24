@@ -14,12 +14,11 @@ namespace SocialMediaApp.DAL.Repositories
         {
             _dbContext= dbContext;
         }
-        public User AddNewUser(string FirstName, string LastName, string Email)
+        public User AddNewUser(string username, string Email)
         {
             var user = new User { 
                 UserId = Guid.NewGuid(),
-                FirstName = FirstName,
-                LastName = LastName,
+                Username= username,
                 Email = Email
 
             };
@@ -85,12 +84,11 @@ namespace SocialMediaApp.DAL.Repositories
             _dbContext.SaveChanges();
         }
 
-        public void RegisterUser(string firstName, string lastName, string email, byte[] passwordHash, byte[] passwordSalt)
+        public void RegisterUser(string username, string email, byte[] passwordHash, byte[] passwordSalt)
         {
             User user = new User
             {
-                FirstName = firstName,
-                LastName = lastName,
+                Username = username,
                 Email = email,
                 PasswordSalt = passwordSalt,
                 PasswordHash = passwordHash,

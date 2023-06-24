@@ -1,0 +1,15 @@
+6/24/2023 1:05:33 AM	This log contains information about the import operation of the script 'bazaAPPP.sql' into project 'SocialMediaApp.DB' on computer 'DESKTOP-9DLQH94' by user'amiro.
+6/24/2023 1:05:33 AM	Started importing file: C:\Users\amiro\Downloads\bazaAPPP.sql 
+6/24/2023 1:05:33 AM	File name C:\Users\amiro\Downloads\bazaAPPP.sql (size: 1362)
+6/24/2023 1:05:33 AM	Parsing import script
+6/24/2023 1:05:33 AM	Total number of batches in script: 1
+6/24/2023 1:05:33 AM	Total number of statements in script: 3
+6/24/2023 1:05:33 AM	The script was successfully imported into the project.
+6/24/2023 1:05:33 AM	Analyzing schema objects...
+6/24/2023 1:05:33 AM	Scanning project for duplicate elements
+6/24/2023 1:05:33 AM	Element 'User' was merged into the existing script: 'C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\dbo\Tables\User.sql'.
+6/24/2023 1:05:33 AM	Element 'UserBlogs' was merged into the existing script: 'C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\dbo\Tables\UserBlogs.sql'.
+6/24/2023 1:05:33 AM	Element 'Fk_User_UserBlogs_UserId' was merged into the existing script: 'C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\dbo\Tables\UserBlogs.sql'.
+6/24/2023 1:05:34 AM	Finished duplicate element processing
+6/24/2023 1:05:34 AM	A summary of the import was saved to the following location: C:\Users\amiro\Desktop\AP_lab_projekat\Lara-AP_Internship_Project\Lara_Backend\SocialMediaApp.DB\Import Script Logs\bazaAPPP_sql_20230623110533.log
+6/24/2023 1:05:34 AM	Click Finish to continue...
