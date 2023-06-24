@@ -41,9 +41,9 @@ export class LoginService {
       );
   }
   logout(jwt: string): Observable<void> {
-    /*if (!jwt || jwt.trim() === '') {
+    if (!jwt || jwt.trim() === '') {
       throw new Error('Invalid JWT');
-    }*/
+    }
   
     const body = `"${jwt}"`;
     console.log('Logout Request body:', body);
@@ -64,7 +64,7 @@ export class LoginService {
   }
 /*
   logout(token: string): Observable<void> {
-    const body = '"'+token+'"'; // The token is already a string, no need to wrap it in double quotes
+    const body = '"'+token+'"';
     console.log('Logout Request body:', body);
   
     return this.http.post<void>(`${this.baseUrl}/api/logout`, body).pipe(

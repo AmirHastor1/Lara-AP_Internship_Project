@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { DateFormatPipe } from './pipes/dateFormat.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     NewsFeedComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
