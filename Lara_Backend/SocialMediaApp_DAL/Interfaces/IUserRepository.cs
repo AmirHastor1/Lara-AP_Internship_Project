@@ -9,7 +9,7 @@ namespace SocialMediaApp.DAL.Interfaces
         User GetUser(Guid userId);
         User AddNewUser(string Username, string Email);
         void DeleteUser(Guid userId);
-
+        string GetUsernameById(Guid userId);
 
         void RegisterUser(string Username, string email, byte[] passwordHash, byte[] passwordSalt);
         bool DoesUserExist(string email);

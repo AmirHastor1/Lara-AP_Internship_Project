@@ -34,6 +34,9 @@
 --**********************************************************************
 
 -- Table dbo.User
+-- Table dbo.User
+-- Table dbo.User
+-- Table dbo.User
 create table
 	[dbo].[User]
 (
@@ -45,6 +48,8 @@ create table
 	, [PasswordSalt] varbinary(max) not null
 	, [Jwt] nvarchar(max) null
 	, [Expiry] datetime2(7) null
+	, [DarkTheme] bit null
+	, [NotificationsOn] bit null
 ,
 constraint [Pk_User_UserId] primary key clustered
 (

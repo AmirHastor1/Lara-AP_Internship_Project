@@ -154,7 +154,7 @@ namespace SocialMediaApp.BLL.Services
         {
             var users = _userRepository.GetUsers();
 
-            List<UserDTO> convertedUsers = new List<UserDTO>();
+            //List<UserDTO> convertedUsers = new List<UserDTO>();
 
             return _mapper.Map<List<UserDTO>>(users);
 

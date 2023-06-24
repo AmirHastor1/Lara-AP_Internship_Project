@@ -11,5 +11,6 @@ namespace SocialMediaApp.DAL
         }
 
         public DbSet<User> User { get; set; } //User Table in DB
+        public DbSet<Blog> Blog { get; set; } //Blog Table in DB
     }
 }

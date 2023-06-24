@@ -13,5 +13,8 @@ namespace SocialMediaApp.DAL.Data
         public byte[] PasswordSalt { get; set; }
         public string? Jwt { get; set; }
         public DateTime? Expiry { get; set; }
+        //public bool DarkTheme { get; set; } = true;
+        public bool NotificationsOn { get; set; } = true;
+
     }
 }

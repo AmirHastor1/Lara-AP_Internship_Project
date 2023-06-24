@@ -14,6 +14,11 @@ namespace SocialMediaApp.DAL.Repositories
         {
             _dbContext= dbContext;
         }
+        public string GetUsernameById(Guid userId)
+        {
+            var user = _dbContext.User.FirstOrDefault(u => u.UserId == userId);
+            return user?.Username;
+        }
         public User AddNewUser(string username, string Email)
         {
             var user = new User { 

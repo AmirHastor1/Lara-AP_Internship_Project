@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Blog] (Table)
+       [dbo].[Comment] (Table)
+       [dbo].[Notification] (Table)
+       [dbo].[User] (Table)
+       [dbo].[Fk_User_Blog_UserId] (Foreign Key)
+       [dbo].[Fk_Blog_Comment_BlogId] (Foreign Key)
+       [dbo].[Fk_User_Comment_UserId] (Foreign Key)
+       [dbo].[Fk_User_Notification_UserId] (Foreign Key)
+
+** Supporting actions
