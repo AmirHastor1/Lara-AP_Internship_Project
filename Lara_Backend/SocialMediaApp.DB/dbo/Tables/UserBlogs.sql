@@ -1,10 +1,12 @@
 ﻿-- Table dbo.UserBlogs
 -- Table dbo.UserBlogs
+-- Table dbo.UserBlogs
 create table
 	[dbo].[UserBlogs]
 (
 	[BlogId] uniqueidentifier not null
 	, [UserId] uniqueidentifier not null
+	, [BlogImage] image null
 ,
 constraint [Pk_UserBlogs_BlogId] primary key clustered
 (
@@ -12,6 +14,14 @@ constraint [Pk_UserBlogs_BlogId] primary key clustered
 )
 );
 GO
+--**********************************************************************
+--	Data
+--**********************************************************************
+--**********************************************************************
+--	Relationships
+--**********************************************************************
+
+-- Relationship Fk_User_UserBlogs_UserId
 --**********************************************************************
 --	Data
 --**********************************************************************

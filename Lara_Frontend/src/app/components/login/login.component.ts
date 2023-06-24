@@ -1,7 +1,9 @@
 // login.component.ts
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LoginInfo } from 'src/app/Models/login.model';
-import { LoginService } from 'src/app/Service/Login.service';
+import { LoginService } from 'src/app/Services/Login.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   @Output() loginSuccess: EventEmitter<LoginInfo> = new EventEmitter();
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
+  
 
   ngOnInit(): void {
     //this.getAllLoginInfo();
@@ -37,9 +40,11 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.email, this.password).subscribe(
       token => {
         // Save the JWT token for later use (e.g., in local storage)
-        console.log('Logged in successfully:', token);
-        // Emit the login success event
        // this.loginSuccess.emit({ email: this.email, password: this.password });
+       sessionStorage.setItem('token', token);
+
+        console.log('Logged in successfully:', token);
+        this.router.navigate(['/home']);
       },
       error => {
         // Display error message to the user

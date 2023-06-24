@@ -6,14 +6,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LoginComponent,
-    
+    NewsFeedComponent,
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

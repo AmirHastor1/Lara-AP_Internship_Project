@@ -12,7 +12,8 @@ namespace SocialMediaApp.BLL.Interfaces
     {
         IEnumerable<UserDTO> GetUsers();
         UserDTO GetUser(Guid UserId);
-       // UserDTO AddNewUser(string Username, string Email);
+        // UserDTO AddNewUser(string Username, string Email);
+        UserDetailsDTO GetUserByEmail(String email);
         void DeleteUser(Guid userId);
         void RegisterUser(UserDTO user);
         string LoginUser(LoginDTO user);

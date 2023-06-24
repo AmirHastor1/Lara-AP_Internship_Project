@@ -62,6 +62,21 @@ namespace SocialMediaApp.BLL.Services
             return CreateToken(foundUser);
         }
 
+        public UserDetailsDTO GetUserByEmail(String email)
+        {
+            var foundUser = _userRepository.GetUser(email);
+            if (foundUser == null) throw new Exception("User not found");
+
+            var convertedUser = new UserDetailsDTO
+            {
+                Username = foundUser.Username,
+                Email = foundUser.Email,
+                ProfilePicture = foundUser.ProfilePicture
+            };
+
+            return convertedUser;
+        }
+
         public void RegisterUser(UserDTO user)
         {
             if (!_userRepository.DoesUserExist(user.Email)) throw new Exception("User already exists");

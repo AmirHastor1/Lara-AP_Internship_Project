@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginInfo } from './Models/login.model';
-import { LoginService } from './Service/Login.service';
+import { LoginService } from './Services/Login.service';
 
 @Component({
   selector: 'app-root',

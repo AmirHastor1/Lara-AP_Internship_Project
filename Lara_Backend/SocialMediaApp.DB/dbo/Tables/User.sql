@@ -25,12 +25,22 @@
 --**********************************************************************
 
 -- Table dbo.User
+-- Model New Model
+-- Updated 6/24/2023 11:39:50 AM
+-- DDL Generated 6/24/2023 11:39:53 AM
+
+--**********************************************************************
+--	Tables
+--**********************************************************************
+
+-- Table dbo.User
 create table
 	[dbo].[User]
 (
 	[UserId] uniqueidentifier not null
 	, [Username] nvarchar(50) not null
 	, [Email] nvarchar(50) not null
+	, [ProfilePicture] image null
 	, [PasswordHash] varbinary(max) not null
 	, [PasswordSalt] varbinary(max) not null
 	, [Jwt] nvarchar(max) null

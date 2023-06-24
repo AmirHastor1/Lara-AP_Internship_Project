@@ -1,17 +1,19 @@
 // login.service.ts
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { LoginInfo } from '../Models/login.model';
 import { tap } from 'rxjs/operators';
+import { UserDetails } from '../Models/userDetails.model';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  baseUrl = 'https://localhost:7053/api/users/api';
+  baseUrl = 'https://localhost:7053/api/users';
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +21,7 @@ export class LoginService {
     const body = { email, password };
     console.log('Login Request:', body); // Log the login request body
   
-    return this.http.post(`${this.baseUrl}/login`, body, { responseType: 'text' })
+    return this.http.post(`${this.baseUrl}/api/login`, body, { responseType: 'text' })
       .pipe(
         tap(response => {
           console.log('Login Response:', response); // Log the login response
@@ -37,6 +39,20 @@ export class LoginService {
           return throwError(errorMessage);
         })
       );
+  }
+
+  getUserDetails(email: string): Observable<UserDetails> {
+    const params = new HttpParams().set('email', email); // Create query parameters with the email
+  
+    return this.http.get<UserDetails>(`${this.baseUrl}/details`, { params }).pipe(
+      tap(response => {
+        console.log('User Details Response:', response); // Log the user details response
+      }),
+      catchError(error => {
+        console.log('User Details Error:', error);
+        return throwError('Failed to retrieve user details.');
+      })
+    );
   }
 
   register(loginInfo: LoginInfo): Observable<void> {

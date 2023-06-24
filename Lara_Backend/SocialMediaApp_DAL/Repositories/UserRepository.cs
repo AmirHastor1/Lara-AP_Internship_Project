@@ -60,6 +60,7 @@ namespace SocialMediaApp.DAL.Repositories
 
         public User? GetUser(string email)
         {
+            Console.WriteLine("EMAAIAL IS: "+email);
             return _dbContext.User.AsQueryable().FirstOrDefault(x => x.Email == email);
         }
 

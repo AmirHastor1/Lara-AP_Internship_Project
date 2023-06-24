@@ -1,0 +1,10 @@
+
+<body>
+    <app-header [loginInfoForHeader]="loginInfoForHome" [requestCount]="requestCount" (currentPageEmitter)="currentPageChange($event)" (logoutStatusEmitter)="logoutStatusHomePage($event)" (searchContentEmitter)="changeSearchContentHome($event)"></app-header>
+    
+    <div *ngIf="currentPage==1">
+        <app-news-feed ></app-news-feed>
+    </div>
+
+
+</body>
