@@ -49,9 +49,9 @@ namespace SocialMediaApp.Controllers
 
         [HttpGet]
         [Route("details")]
-        public UserDetailsDTO GetUserDetails(String email)
+        public UserDetailsDTO GetUserDetailsByJwt(String jwt)
         {
-            return _userService.GetUserByEmail(email);
+            return _userService.GetUserByJwt(jwt);
         }
 
         [HttpPost]

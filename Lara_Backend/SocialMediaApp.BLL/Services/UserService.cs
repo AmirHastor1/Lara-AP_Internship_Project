@@ -62,7 +62,25 @@ namespace SocialMediaApp.BLL.Services
             return CreateToken(foundUser);
         }
 
-        public UserDetailsDTO GetUserByEmail(String email)
+        public UserDetailsDTO GetUserByJwt(string jwt)
+        {
+            var foundUser = _userRepository.GetUserByJwt(jwt);
+            if (foundUser == null) throw new Exception("User with session not found");
+
+            var convertedUser = new UserDetailsDTO
+            {
+                UserId = foundUser.UserId,
+                Username = foundUser.Username,
+                Email = foundUser.Email,
+                ProfilePicture = foundUser.ProfilePicture,
+                DarkTheme = foundUser.DarkTheme,
+                NotificationsOn = foundUser.NotificationsOn,
+            };
+
+            return convertedUser;
+        }
+
+        public UserDetailsDTO GetUserByEmail(string email)
         {
             var foundUser = _userRepository.GetUser(email);
             if (foundUser == null) throw new Exception("User not found");

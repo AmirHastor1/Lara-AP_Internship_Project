@@ -8,8 +8,11 @@ namespace SocialMediaApp.BLL.Data
 {
     public class UserDetailsDTO
     {
-        public string Username { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
+        public Guid UserId { get; set; }
+        public string Username { get; set; } 
+        public string Email { get; set; }
         public byte[] ProfilePicture { get; set; }
+        public bool DarkTheme { get; set; } 
+        public bool NotificationsOn { get; set; }
     }
 }

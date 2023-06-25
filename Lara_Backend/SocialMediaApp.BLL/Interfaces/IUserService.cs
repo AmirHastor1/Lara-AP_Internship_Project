@@ -14,6 +14,7 @@ namespace SocialMediaApp.BLL.Interfaces
         UserDTO GetUser(Guid UserId);
         // UserDTO AddNewUser(string Username, string Email);
         UserDetailsDTO GetUserByEmail(String email);
+        UserDetailsDTO GetUserByJwt(String jwt);
         void DeleteUser(Guid userId);
         void RegisterUser(UserDTO user);
         string LoginUser(LoginDTO user);

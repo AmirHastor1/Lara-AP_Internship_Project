@@ -65,8 +65,13 @@ namespace SocialMediaApp.DAL.Repositories
 
         public User? GetUser(string email)
         {
-            Console.WriteLine("EMAAIAL IS: "+email);
-            return _dbContext.User.AsQueryable().FirstOrDefault(x => x.Email == email);
+            Console.WriteLine("EMAAIAL IS: " + email);
+            if (!string.IsNullOrEmpty(email))
+                return _dbContext.User.AsQueryable().FirstOrDefault(x => x.Email == email);
+            else
+            {
+                return null;
+            }
         }
 
         public User? GetUserByJwt(string jwt)
