@@ -10,6 +10,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DateFormatPipe } from './pipes/dateFormat.pipe';
+import { PostCreationComponent } from './components/post-creation/post-creation.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DateFormatPipe } from './pipes/dateFormat.pipe';
     NewsFeedComponent,
     HeaderComponent,
     HomeComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    PostCreationComponent
   ],
   imports: [
     BrowserModule,

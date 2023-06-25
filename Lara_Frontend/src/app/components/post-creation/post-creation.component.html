@@ -1,0 +1,24 @@
+
+<div class="messageSender">
+    <div class="component-container">
+        <div class="messageSender__top">
+            <form>
+                <textarea class="messageSender__input" placeholder="What's on your mind?" name="postInfoDemo.postMessage" [(ngModel)]="postInfoDemo.blogDescription"></textarea>
+            </form>
+        </div>
+    
+        <div class="messageSender__bottom">
+            <div class="messageSender__option">
+                <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="handlerFileInputPost($event)" />
+                <label for="imageUpload" style="color: green" class="material-icons">Upload File</label>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer; width: 100px;" (click)="cancel()">Cancel</button>
+
+            <button style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer; width: 100px;" (click)="createPost()">Save</button>
+
+        </div>
+    </div>
+</div>

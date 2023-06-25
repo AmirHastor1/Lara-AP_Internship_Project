@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
         // Save the JWT token for later use (e.g., in local storage)
        // this.loginSuccess.emit({ email: this.email, password: this.password });
        sessionStorage.setItem('token', token);
-
+        this.setUserDetails(token);
+        
         console.log('Logged in successfully:', token);
         this.router.navigate(['/home']);
       },
@@ -51,9 +52,21 @@ export class LoginComponent implements OnInit {
         alert(error);
       }
     );
-
     this.email = '';
     this.password = '';
+  }
+  
+  setUserDetails(jwt:string){
+    this.loginService.getUserDetails(jwt)
+      .subscribe(
+        userDetails => {
+          sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
+          // You can access userDetails properties like userDetails.userId, userDetails.username, etc.
+        },
+        error => {
+          console.log('Error retrieving user details:', error);
+        }
+      );
   }
 
   registerButtonMain() {

@@ -1,27 +1,51 @@
-<div class="messageSender">
-    <div class="messageSender__top">
-      <form>
-        <input class="messageSender__input" placeholder="What's on your mind?" type="text" name="postInfoDemo.postMessage" [(ngModel)]="postInfoDemo.blogDescription" />
-        <button style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer;" (click)="createPost()">Post</button>
-      </form>
-    </div>
-  
-    <div class="messageSender__bottom">
-      
-  
-      <div class="messageSender__option">
-        <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="handlerFileInputPost($event)" />
-        <label for="imageUpload" style="color: green" class="material-icons">photo_library</label>
-        <h3>Photo</h3>
+<div class="messageSender__top">
+    <button style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer;" (click)="createAPost()">Create a Post</button>
+</div>
+<div *ngIf="blogItems.length > 0">
+  <div *ngFor="let item of blogItems">
+    <div *ngIf="item.blogImage !== 'string'; else other_content">
+      <div class="post">
+        <div class="post__top">
+          <img class="user__avatar post__avatar" [src]="decodeImage(item.blogImage)" alt="" />
+          <div class="post__topInfo">
+            <h3>{{ item.username }}</h3>
+            <p>{{ item.blogDate | date: 'dd-MM-yyyy' }}</p>
+          </div>
+        </div>
+
+        <div class="post__bottom">
+          <p>{{ item.blogDescription  }}</p>
+        </div>
+
+        <div class="post__image">
+          <img [src]="decodeImage(item.blogImage)" alt="Blog Image" class="blog-image">
+        </div>
+
+        <div class="likesNumber">
+          <p>{{ item.blogLikes }} person likes</p>
+        </div>
+
+        <div class="post__options">
+          <div class="post__option" >
+            <span class="material-icons">thumb_up</span>
+            <p>Like</p>
+          </div>
+
+          <div class="post__option">
+            <span class="material-icons">chat_bubble_outline</span>
+            <p>Comment</p>
+          </div>
+
+          <div class="post__option">
+            <span class="material-icons">near_me</span>
+            <p>Share</p>
+          </div>
+        </div>
       </div>
-  
-      
     </div>
-  </div>
-  
-  <div *ngIf="blogItems.length > 0">
-    <div *ngFor="let item of blogItems">
-      <div *ngIf="item.blogImage !== 'string'; else other_content">
+
+    <ng-template #other_content>
+      <div class="newChange">
         <div class="post">
           <div class="post__top">
             <img class="user__avatar post__avatar" [src]="decodeImage(item.blogImage)" alt="" />
@@ -30,30 +54,26 @@
               <p>{{ item.blogDate | date: 'dd-MM-yyyy' }}</p>
             </div>
           </div>
-  
+
           <div class="post__bottom">
-            <p>{{ item.blogDescription  }}</p>
+            <p>{{ item.blogDescription }}</p>
           </div>
-  
-          <div class="post__image">
-            <img [src]="decodeImage(item.blogImage)" alt="Blog Image" class="blog-image">
-          </div>
-  
+
           <div class="likesNumber">
-            <p>{{ item.blogLikes }} person likes</p>
+            <p>{{ item.blogLikes }} person like</p>
           </div>
-  
+
           <div class="post__options">
             <div class="post__option" >
               <span class="material-icons">thumb_up</span>
               <p>Like</p>
             </div>
-  
+
             <div class="post__option">
               <span class="material-icons">chat_bubble_outline</span>
               <p>Comment</p>
             </div>
-  
+
             <div class="post__option">
               <span class="material-icons">near_me</span>
               <p>Share</p>
@@ -61,60 +81,21 @@
           </div>
         </div>
       </div>
-  
-      <ng-template #other_content>
-        <div class="newChange">
-          <div class="post">
-            <div class="post__top">
-              <img class="user__avatar post__avatar" [src]="decodeImage(item.blogImage)" alt="" />
-              <div class="post__topInfo">
-                <h3>{{ item.username }}</h3>
-                <p>{{ item.blogDate | date: 'dd-MM-yyyy' }}</p>
-              </div>
-            </div>
-  
-            <div class="post__bottom">
-              <p>{{ item.blogDescription }}</p>
-            </div>
-  
-            <div class="likesNumber">
-              <p>{{ item.blogLikes }} person like</p>
-            </div>
-  
-            <div class="post__options">
-              <div class="post__option" >
-                <span class="material-icons">thumb_up</span>
-                <p>Like</p>
-              </div>
-  
-              <div class="post__option">
-                <span class="material-icons">chat_bubble_outline</span>
-                <p>Comment</p>
-              </div>
-  
-              <div class="post__option">
-                <span class="material-icons">near_me</span>
-                <p>Share</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-    </div>
-    <div class="pagination-container">
-        <div class="pagination">
-          <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
-          <span>{{ currentPage }}</span>
-          <button [disabled]="currentPage * itemsPerPage >= totalItems" (click)="onPageChange(currentPage + 1)">Next</button>
-        </div>
+    </ng-template>
+  </div>
+  <div class="pagination-container">
+      <div class="pagination">
+        <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
+        <span>{{ currentPage }}</span>
+        <button [disabled]="currentPage * itemsPerPage >= totalItems" (click)="onPageChange(currentPage + 1)">Next</button>
       </div>
-
-  </div>
-  
-  <div class="post" *ngIf="blogItems.length === 0">
-    <div class="post__image">
-      <img src="../../../assets/images/no_post_found.jpg" alt="" />
     </div>
+
+</div>
+
+<div class="post" *ngIf="blogItems.length === 0">
+  <div class="post__image">
+    <img src="../../../assets/images/no_post_found.jpg" alt="" />
   </div>
-  
-  
+</div>
+

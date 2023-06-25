@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // this is initilization function 
   }
+
   currentProfilePerson(demo: LoginInfo){
     this.currentPage = 4;
   }
