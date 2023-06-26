@@ -110,6 +110,12 @@ namespace SocialMediaApp.BLL.Services
 
             return convertedUser;
         }
+
+        public void UpdateUser(UserDetailsDTO user, string jwt)
+        {
+            _userRepository.UpdateUser(jwt, user.UserId, user.Username, user.Email, user.ProfilePicture, user.DarkTheme, user.NotificationsOn);
+        }
+
         public void RegisterUser(UserDTO user)
         {
             if (!_userRepository.DoesUserExist(user.Email,user.Username)) throw new Exception("User already exists");

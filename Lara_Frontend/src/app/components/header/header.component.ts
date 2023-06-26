@@ -178,25 +178,28 @@ export class HeaderComponent implements OnInit {
     */ 
   }
   getUserByUsername(search: string) {
-    this.userService.getUserByUsername(search).subscribe(
-      (userDetails: UserDetails) => {
-        if (userDetails) {
-          // Emit the userDetails to the parent component
-          this.searchResult = userDetails.username;
-          //Save user from Search Results for later use
-          sessionStorage.setItem('userSearchResult', JSON.stringify(userDetails));
-          sessionStorage.setItem('ProfileType', 'searchResult');
-          sessionStorage.setItem('userPosts', userDetails.userId)
-
-          this.toggleSearchDropdown();
-        } else {
-          console.log('User not found.');
+    //if(!this.searchDropdownVisible)
+      this.userService.getUserByUsername(search).subscribe(
+        (userDetails: UserDetails) => {
+          if (userDetails) {
+            // Emit the userDetails to the parent component
+            this.searchResult = userDetails.username;
+            //Save user from Search Results for later use
+            sessionStorage.setItem('userSearchResult', JSON.stringify(userDetails));
+            sessionStorage.setItem('ProfileType', 'searchResult');
+            sessionStorage.setItem('userPosts', userDetails.userId)
+            //if(!this.searchDropdownVisible)
+              this.toggleSearchDropdown();
+          } else {
+            console.log('User not found.');
+          }
+        },
+        (error) => {
+          console.log('Error retrieving user:', error);
         }
-      },
-      (error) => {
-        console.log('Error retrieving user:', error);
-      }
-    );
+      );
+      //else
+       // this.toggleSearchDropdown();
   }
 
   openUserProfile(){

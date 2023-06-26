@@ -75,9 +75,14 @@ export class NewsFeedComponent implements OnInit {
       this.blogService.commentOnBlog(userId, blogId, username, commentText, token)
         .subscribe(
           (response) => {
-            // Handle success response here
             //console.log('Comment added successfully:', response);
             this.getComments(blogId); // Refresh the comments for the blog
+            //this.getBlogItems(this.currentPage);
+
+            //this.postInfoDemo.blogComments += 1;
+
+            //this.getBlogItems(this.currentPage);
+
             this.postInfoDemo.blogDescription = ''; // Clear the comment textarea
           },
           (error) => {
@@ -121,13 +126,8 @@ export class NewsFeedComponent implements OnInit {
   
     this.blogService.getComments(blogId).subscribe(
       (response: CommentInfo[]) => {
-        // Update the comments for the selected blog post
-        // You can store the comments in the corresponding BlogInfo object or create a separate property to hold them
-        // For example, if you update the BlogInfo model to include a comments property:
-        //const selectedBlog = this.blogItems.find((blog) => blog.blogId === this.selectedBlogId);
-        //if (selectedBlog) {
+
           this.blogComments = response;
-        //}
       },
       (error) => {
         console.log('Error fetching comments for blog:', error);
@@ -192,9 +192,6 @@ export class NewsFeedComponent implements OnInit {
       }
     );
   }
-
-  
-  
 
   onPageChange(page: number): void {
     this.currentPage = page;

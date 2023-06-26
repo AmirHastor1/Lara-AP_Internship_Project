@@ -12,7 +12,7 @@ namespace SocialMediaApp.DAL.Interfaces
         string GetUsernameById(Guid userId);
         User? GetUserByJwt(string jwt);
         User? GetUserByUsername(string username);
-
+        void UpdateUser(string jwt, Guid userId, string username, string email, byte[] picture, bool darktheme, bool notificationsOn);
         void RegisterUser(string Username, string email, byte[] picture, byte[] passwordHash, byte[] passwordSalt);
         bool DoesUserExist(string email, string username);
         bool IsValidEmail(string email);

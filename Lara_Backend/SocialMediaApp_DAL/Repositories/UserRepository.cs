@@ -31,6 +31,25 @@ namespace SocialMediaApp.DAL.Repositories
             _dbContext.SaveChanges(); // commit 
             return user;
         }
+        public void UpdateUser(string jwt, Guid userId, string username, string email, byte[] picture, bool darktheme, bool notificationsOn)
+        {
+            var user = _dbContext.User.FirstOrDefault(u => u.UserId == userId && u.Jwt == jwt);
+            if (user != null)
+            {
+                // Update the user properties
+                user.ProfilePicture = picture;
+                user.DarkTheme = darktheme;
+                user.NotificationsOn = notificationsOn;
+
+                _dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Validation Failed");
+
+            }
+
+        }
         public IEnumerable<User> GetUsers()
         {
             return _dbContext.User.AsQueryable();

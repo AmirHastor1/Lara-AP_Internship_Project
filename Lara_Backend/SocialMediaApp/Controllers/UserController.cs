@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SocialMediaApp.BLL.Data;
 using SocialMediaApp.BLL.Interfaces;
+using System.Net;
 
 namespace SocialMediaApp.Controllers
 {
     [Route("api/users")]
     [ApiController]
+    [Authorize]
+
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -16,7 +20,7 @@ namespace SocialMediaApp.Controllers
         }
 
         [HttpPost]
-        [Route("api/register")]
+        [Route("api/register"), AllowAnonymous]
         public void RegisterUser(UserDTO user)
         {
             if (user == null || string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(user.Password))
@@ -38,7 +42,7 @@ namespace SocialMediaApp.Controllers
         }
 
         [HttpPost]
-        [Route("api/login")]
+        [Route("api/login"), AllowAnonymous]
         public string LoginUser(LoginDTO user)
         {
             if (user == null || string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(user.Password))
@@ -48,27 +52,36 @@ namespace SocialMediaApp.Controllers
         }
 
         [HttpGet]
-        [Route("details")]
+        [Route("details"), AllowAnonymous]
         public UserDetailsDTO GetUserDetailsByJwt(String jwt)
         {
             return _userService.GetUserByJwt(jwt);
         }
 
         [HttpGet]
-        [Route("search")]
+        [Route("search"), AllowAnonymous]
         public UserDetailsDTO GetUserByUsername(String username)
         {
             return _userService.GetUserByUsername(username);
         }
 
         [HttpPost]
-        [Route("api/logout")]
+        [Route("api/logout"), AllowAnonymous]
         public void LogoutUser([FromBody] string jwt)
         {
             if (string.IsNullOrWhiteSpace(jwt))
                 throw new Exception("Invalid request parameters");
 
             _userService.LogoutUser(jwt);
+        }
+
+        [HttpPost]
+        [Route("user/update")]
+        public void UpdateUser(UserDetailsDTO user)
+        {
+            string authorizationHeader = Request.Headers["Authorization"];
+            string jwt = authorizationHeader?.Replace("bearer ", "");
+            _userService.UpdateUser(user, jwt);
         }
 
         //NON AUTHENTICATION PART
