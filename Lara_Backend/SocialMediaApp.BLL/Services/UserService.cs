@@ -95,6 +95,21 @@ namespace SocialMediaApp.BLL.Services
             return convertedUser;
         }
 
+        public UserDetailsDTO GetUserByUsername(string username)
+        {
+            var foundUser = _userRepository.GetUserByUsername(username);
+            if (foundUser == null) //throw new Exception("User not found");
+                return null;
+            var convertedUser = new UserDetailsDTO
+            {
+                UserId= foundUser.UserId,
+                Username = foundUser.Username,
+                Email = foundUser.Email,
+                ProfilePicture = foundUser.ProfilePicture
+            };
+
+            return convertedUser;
+        }
         public void RegisterUser(UserDTO user)
         {
             if (!_userRepository.DoesUserExist(user.Email,user.Username)) throw new Exception("User already exists");
@@ -106,7 +121,7 @@ namespace SocialMediaApp.BLL.Services
 
             CreatePasswordHash(user.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            _userRepository.RegisterUser(user.Username,user.Email, passwordHash, passwordSalt);
+            _userRepository.RegisterUser(user.Username,user.Email,user.ProfilePicture, passwordHash, passwordSalt);
         }
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

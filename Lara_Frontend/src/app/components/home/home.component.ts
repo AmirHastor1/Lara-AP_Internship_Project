@@ -18,28 +18,11 @@ export class HomeComponent implements OnInit {
   search : string ="";
 
   ngOnInit(): void {
+    console.log("Home Loaded!")
+    sessionStorage.setItem('userPosts',"all"); 
+
     // this is initilization function 
   }
-
-  currentProfilePerson(demo: LoginInfo){
-    this.currentPage = 4;
-  }
-
-  currentRequestCount(demo:number){
-    this.requestCount = demo;
-  }
-
-  currentPageChange(demo : number){
-    this.currentPage = demo;
-  }
-
-  logoutStatusHomePage(demo : boolean){
-    this.logoutStatusEmitter.emit(demo);
-  }
-
-  searchResultInfo : LoginInfo[] = [];
-  changeSearchContentHome(demo : LoginInfo[]){
-    this.searchResultInfo= demo;
-  }
+  
 
 }

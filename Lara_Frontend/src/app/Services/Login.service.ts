@@ -68,7 +68,7 @@ export class LoginService {
   
     return this.http.get<UserDetails>(`${this.baseUrl}/details`, { params }).pipe(
       tap(response => {
-        console.log('User Details:', response); // Log the user details response
+        console.log('User Details Response:', response); // Log the user details response
       }),
       catchError(error => {
         console.log('User Details Error:', error);

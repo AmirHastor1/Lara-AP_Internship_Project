@@ -54,6 +54,13 @@ namespace SocialMediaApp.Controllers
             return _userService.GetUserByJwt(jwt);
         }
 
+        [HttpGet]
+        [Route("search")]
+        public UserDetailsDTO GetUserByUsername(String username)
+        {
+            return _userService.GetUserByUsername(username);
+        }
+
         [HttpPost]
         [Route("api/logout")]
         public void LogoutUser([FromBody] string jwt)

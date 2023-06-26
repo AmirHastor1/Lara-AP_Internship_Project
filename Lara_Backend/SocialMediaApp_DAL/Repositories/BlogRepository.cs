@@ -18,7 +18,7 @@ namespace SocialMediaApp.DAL.Repositories
         }
         public IEnumerable<Blog> GetBlogs()
         {
-            return _dbContext.Blog.AsQueryable();
+            return _dbContext.Blog.OrderByDescending(blog => blog.BlogDate).AsQueryable();
         }
         public IEnumerable<Blog> GetUserBlogs(Guid userId)
         {
@@ -57,15 +57,18 @@ namespace SocialMediaApp.DAL.Repositories
                     UserId = userId,
                     BlogId = blogId
                 };
-                Notification notification = new Notification
+                if (blog.UserId != userId)
                 {
-                    NotificationId = Guid.NewGuid(),
-                    NotificationDate = DateTime.Now,
-                    UserId = blog.UserId,
-                    NotificationText = user.Username + " liked your post.",
+                    Notification notification = new Notification
+                    {
+                        NotificationId = Guid.NewGuid(),
+                        NotificationDate = DateTime.Now,
+                        UserId = blog.UserId,
+                        NotificationText = user.Username + " liked your post.",
 
-                };
-                _dbContext.Notification.Add(notification);
+                    };
+                    _dbContext.Notification.Add(notification);
+                }
                 _dbContext.Like.Add(like);
                 blog.BlogLikes += 1;
             }
@@ -85,15 +88,18 @@ namespace SocialMediaApp.DAL.Repositories
                 Username = username,
                 CommentText = commentText
             };
-            Notification notification = new Notification
+            if (blog.UserId != userId)
             {
-                NotificationId = Guid.NewGuid(),
-                NotificationDate = DateTime.Now,
-                UserId = blog.UserId,
-                NotificationText = user.Username + " commented on your post.",
+                Notification notification = new Notification
+                {
+                    NotificationId = Guid.NewGuid(),
+                    NotificationDate = DateTime.Now,
+                    UserId = blog.UserId,
+                    NotificationText = user.Username + " commented on your post.",
 
-            };
-            _dbContext.Notification.Add(notification);
+                };
+                _dbContext.Notification.Add(notification);
+            }
             _dbContext.Comment.Add(comment);
             blog.BlogComments += 1;
             _dbContext.SaveChanges();

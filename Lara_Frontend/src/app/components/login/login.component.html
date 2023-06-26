@@ -61,6 +61,12 @@
             <label class="placeholder">Password</label>
           </div>
         </div>
+        <div class="Fields">
+          <div class="Fieldset">
+            <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="handlerFileInputPost($event)" />
+            <label for="imageUpload" style="color: green" class="material-icons">Add Profile Picture</label>
+          </div>
+        </div>
 
       </div>
       <button class="RegisterButtonMain" (click)="registerButtonMain()">Register</button>

@@ -97,6 +97,10 @@ namespace SocialMediaApp.DAL.Repositories
         {
             return _dbContext.User.AsQueryable().FirstOrDefault(x => x.Jwt == jwt);
         }
+        public User? GetUserByUsername(string username)
+        {
+            return _dbContext.User.AsQueryable().FirstOrDefault(x => x.Username == username);
+        }
 
         public void InitiateToken(User user, string jwt, DateTime expiry)
         {
@@ -114,7 +118,7 @@ namespace SocialMediaApp.DAL.Repositories
             _dbContext.SaveChanges();
         }
 
-        public void RegisterUser(string username, string email, byte[] passwordHash, byte[] passwordSalt)
+        public void RegisterUser(string username, string email, byte[] picture, byte[] passwordHash, byte[] passwordSalt)
         {
             User user = new User
             {
@@ -122,7 +126,9 @@ namespace SocialMediaApp.DAL.Repositories
                 Email = email,
                 PasswordSalt = passwordSalt,
                 PasswordHash = passwordHash,
-                UserId = Guid.NewGuid()
+                UserId = Guid.NewGuid(),
+                ProfilePicture = picture
+                
 
             };
             _dbContext.User.Add(user);

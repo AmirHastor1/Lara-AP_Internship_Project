@@ -4,9 +4,11 @@ import { NewsFeedItem } from 'src/app/Models/news-feed-item.model';
 import { BlogService } from 'src/app/Services/blog.service';
 import { BlogInfo } from 'src/app/Models/blog.model';
 import { DateFormatPipe } from 'src/app/pipes/dateFormat.pipe';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { UserDetails } from 'src/app/Models/userDetails.model';
 import { CommentInfo } from 'src/app/Models/comment.model';
+import { UserService } from 'src/app/Services/user.service';
+
 
 @Component({
   selector: 'app-news-feed',
@@ -15,6 +17,7 @@ import { CommentInfo } from 'src/app/Models/comment.model';
   providers: [DateFormatPipe]
 })
 export class NewsFeedComponent implements OnInit {
+  infoPerson: UserDetails | undefined;
   blogItems: BlogInfo[] = [];
   blogComments: CommentInfo[] = [];
   currentPage: number = 1;
@@ -24,11 +27,22 @@ export class NewsFeedComponent implements OnInit {
 
   constructor(
     private blogService: BlogService,
+    private route: ActivatedRoute,
+    private userService: UserService,
     private newsfeedService: NewsFeedService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const username = params.get('username');
+      if (username) {
+        // Call a method to load the user profile using the username
+        this.loadUserPosts(username);
+        this.getBlogItems(this.currentPage);
+      }
+    });
+
     this.getBlogItems(this.currentPage);
   }
   selectedBlogId: string | null = null;
@@ -62,7 +76,7 @@ export class NewsFeedComponent implements OnInit {
         .subscribe(
           (response) => {
             // Handle success response here
-            console.log('Comment added successfully:', response);
+            //console.log('Comment added successfully:', response);
             this.getComments(blogId); // Refresh the comments for the blog
             this.postInfoDemo.blogDescription = ''; // Clear the comment textarea
           },
@@ -87,7 +101,7 @@ export class NewsFeedComponent implements OnInit {
         .subscribe(
           (response) => {
             // Handle success response here
-            console.log('Like processed successfully:', response);
+            //console.log('Like processed successfully:', response);
             this.getBlogItems(this.currentPage);
             // Reset the form or perform any other necessary actions
           },
@@ -124,25 +138,59 @@ export class NewsFeedComponent implements OnInit {
   getBlogItems(page: number): void {
     // Calculate the starting index of the items for the current page
     const startIndex = (page - 1) * this.itemsPerPage;
+    var check = sessionStorage.getItem('userPosts')
+    if(check=="all"){
+      this.blogService.getBlogs().subscribe(
+        (response: BlogInfo[]) => {
+          this.totalItems = response.length;
+          //console.log(response);
+          // Extract the items for the current page using Array.slice()
+          this.blogItems = response.slice(
+            startIndex,
+            startIndex + this.itemsPerPage
+          );
+        },
+        (error) => {
+          console.log('Error fetching blog items:', error);
+        }
+      );
+    }else{
+      this.blogService.getUserBlogs(check!!).subscribe(
+        (response: BlogInfo[]) => {
+          this.totalItems = response.length;
+          //console.log(response);
+          // Extract the items for the current page using Array.slice()
+          this.blogItems = response.slice(
+            startIndex,
+            startIndex + this.itemsPerPage
+          );
+        },
+        (error) => {
+          console.log('Error fetching blog items:', error);
+        }
+      );
 
-    this.blogService.getBlogs().subscribe(
-      (response: BlogInfo[]) => {
-        this.totalItems = response.length;
-        console.log(response);
-        // Extract the items for the current page using Array.slice()
-        this.blogItems = response.slice(
-          startIndex,
-          startIndex + this.itemsPerPage
-        );
-      },
-      (error) => {
-        console.log('Error fetching blog items:', error);
-      }
-    );
+    }
   }
-
+    
   decodeImage(base64Image: string): string {
     return 'data:image/jpeg;base64,' + base64Image;
+  }
+
+  loadUserPosts(username: string) {
+    console.log("SENDING USERNAME: "+username);
+
+    this.userService.getUserByUsername(username).subscribe(
+      (userDetails: UserDetails) => {
+        if (userDetails) {
+          //sessionStorage.setItem('userPosts',userDetails.userId);
+          //console.log("FOUND USER: "+userDetails);
+          this.infoPerson = userDetails;
+        } else {
+          console.log('User not found.');
+        }
+      }
+    );
   }
 
   

@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DateFormatPipe } from './pipes/dateFormat.pipe';
 import { PostCreationComponent } from './components/post-creation/post-creation.component';
 import { NotificationDropdownComponent } from './components/notification-dropdown/notification-dropdown.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NotificationDropdownComponent } from './components/notification-dropdow
     HomeComponent,
     DateFormatPipe,
     PostCreationComponent,
-    NotificationDropdownComponent
+    NotificationDropdownComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

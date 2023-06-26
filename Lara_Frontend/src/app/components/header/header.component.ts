@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/Services/notification.service';
 import { NotificationInfo } from 'src/app/Models/notification.model';
 import { UserDetails } from 'src/app/Models/userDetails.model';
-
+import { UserService } from 'src/app/Services/user.service';
+//import { ProfileComponent } from 'src/app/components/profile/profile.component';
 
 
 @Component({
@@ -17,35 +18,49 @@ import { UserDetails } from 'src/app/Models/userDetails.model';
 })
 export class HeaderComponent implements OnInit {
   dropdownVisible = false;
+  searchDropdownVisible = false;
 
   showNotificationDropdown = false;
   numberOfNotifications=0;
   latestNotifications: NotificationInfo[] = [];
   timerTime: number=0;
-  
 
 
   @Input() loginInfoForHeader : LoginInfo | undefined;
   @Input() requestCount: number = 0;
   @Output() currentPageEmitter : EventEmitter<number> = new EventEmitter();
   @Output() logoutStatusEmitter : EventEmitter<boolean> = new EventEmitter();
-  @Output() searchContentEmitter : EventEmitter<LoginInfo[]> = new EventEmitter();
+  @Output() searchContentEmitter : EventEmitter<string> = new EventEmitter();
   token = sessionStorage.getItem('token');
   private timerSubscription: Subscription | undefined;
   private timerStarted = false;
+  
+  profilePicture :string="";
 
   constructor(private loginService: LoginService,
-     private router: Router,
-    private notificationService: NotificationService) { }
+  private userService: UserService,
+  //private profileComponent: ProfileComponent,
+  private router: Router,
+  private notificationService: NotificationService) { }
   
   currentPage : number=1;
-
+  userId:string="";
+  username:string=""
   ngOnInit(): void {
+    console.log("Header Loaded!")
+    const userDetailsString = sessionStorage.getItem('userDetails');
+    const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+    if(userDetails)
+      this.profilePicture = userDetails.profilePicture || '';
+    this.userId=userDetails.userId;
+    this.username=userDetails.username;
+
     const timerTimeStr = sessionStorage.getItem('timer');
     this.timerTime = timerTimeStr ? parseInt(timerTimeStr, 10) : 0;
 
-    
+    //this.loadUserDetails();
     this.loadLatestNotifications();
+
     if (this.timerTime>1) {
       this.startNotificationTimer();
       this.timerStarted = true;
@@ -64,11 +79,18 @@ export class HeaderComponent implements OnInit {
   }
   
 
-  userProfile(){    
+  userProfile(){
+    sessionStorage.setItem('userPosts',this.userId); 
+    this.router.navigate(['/profile', this.username]);
+
+
   }
 
   toggleDropdown() {
     this.dropdownVisible = !this.dropdownVisible;
+  }
+  toggleSearchDropdown() {
+    this.searchDropdownVisible = !this.searchDropdownVisible;
   }
 
   toggleNotificationDropdown() {
@@ -96,6 +118,14 @@ export class HeaderComponent implements OnInit {
         }
       );
   }   
+
+  /*loadUserDetails(): void {
+    const userDetailsString = sessionStorage.getItem('userDetails');
+    this.userDetails = userDetailsString
+      ? JSON.parse(userDetailsString)
+      : undefined;
+    this.profilePicture = this.userDetails?.profilePicture;
+  }*/
 
   startNotificationTimer() {
     const timer = interval(1000).pipe(take(30)); // 30-second timer
@@ -126,6 +156,7 @@ export class HeaderComponent implements OnInit {
     this.loginService.logout(this.token!!).subscribe(
       () => {
         console.log('Logout in successfully:');
+        //sessionStorage.clear();
         this.router.navigate(['/login']);
       },
       error => {
@@ -137,28 +168,48 @@ export class HeaderComponent implements OnInit {
   }
 
   // this is for searching
-  loginInfo : LoginInfo[] = [];
-  findFriendInfo: LoginInfo [] = [];
+  //findFriendInfo: UserDetails [] = [];
   search : string = "";
-  clickOnSearch(){
+  searchResult : string = "";
+  clickOnSearch(){/*
     this.search.trim();
     this.search = this.search.substring(0, this.search.length).toLowerCase();
     if (this.search.length==0) return;
-    this.findFriendInfo = [];
+    */ 
+  }
+  getUserByUsername(search: string) {
+    this.userService.getUserByUsername(search).subscribe(
+      (userDetails: UserDetails) => {
+        if (userDetails) {
+          // Emit the userDetails to the parent component
+          this.searchResult = userDetails.username;
+          //Save user from Search Results for later use
+          sessionStorage.setItem('userSearchResult', JSON.stringify(userDetails));
+          sessionStorage.setItem('ProfileType', 'searchResult');
+          sessionStorage.setItem('userPosts', userDetails.userId)
 
-    this.loginInfo = JSON.parse(sessionStorage.getItem('loginInfo') || '{}') as LoginInfo[];
-    
-    for (var i = 0; i < this.loginInfo.length; i++){
-      //var name = this.loginInfo[i].name;
-      var name = "proba"
-      name = name.substring(0, name.length).toLowerCase();
-      if (name.includes(this.search)){
-        this.findFriendInfo.push(this.loginInfo[i]);
+          this.toggleSearchDropdown();
+        } else {
+          console.log('User not found.');
+        }
+      },
+      (error) => {
+        console.log('Error retrieving user:', error);
       }
-    }
+    );
+  }
 
-    this.searchContentEmitter.emit(this.findFriendInfo);
-    this.currentPageEmitter.emit(5);
+  openUserProfile(){
+    //if (this.router.url.endsWith('/profile')) {
+      this.router.navigateByUrl(`/profile/${this.search}`);
+    //} else {
+    //  this.router.navigate(['/profile']);
+    //}
+  }
+
+
+  decodeImage(base64Image: string): string {
+    return 'data:image/jpeg;base64,' + base64Image;
   }
 
 }

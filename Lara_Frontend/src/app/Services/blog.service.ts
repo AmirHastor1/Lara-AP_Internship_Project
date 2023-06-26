@@ -23,11 +23,25 @@ export class BlogService {
 
     return this.http.get<BlogInfo[]>(`${this.baseUrl}/all`).pipe(
       tap(response => {
-        console.log('Blog Details Response:', response); // Log the blog details response
+        //console.log('Blog Details Response:', response); // Log the blog details response
       }),
       catchError(error => {
         console.log('Blog Details Error:', error);
         return throwError('Failed to retrieve blog details.');
+      })
+    );
+  }
+
+  getUserBlogs(userId: string): Observable<BlogInfo[]> {
+    const params = new HttpParams().set('userId', userId); // Create query parameters
+
+    return this.http.get<BlogInfo[]>(`${this.baseUrl}/all/user`, { params }).pipe(
+      tap(response => {
+        console.log('Blog Details for User Response:', response); // Log the blog details response
+      }),
+      catchError(error => {
+        console.log('Blogs retrieveal Error:', error);
+        return throwError('Failed to retrieve blogs.');
       })
     );
   }
@@ -37,7 +51,7 @@ export class BlogService {
 
     return this.http.get<CommentInfo[]>(`${this.baseUrl}/blog/comments`, { params }).pipe(
       tap(response => {
-        console.log('Blog Comments Response:', response); // Log the blog details response
+        //console.log('Blog Comments Response:', response); // Log the blog details response
       }),
       catchError(error => {
         console.log('Blog Comments Error:', error);
@@ -56,11 +70,11 @@ export class BlogService {
       blogImage: blogImage.split(',')[1],
       blogDescription: blogDescription
     };
-    console.log("body: "+ JSON.stringify(body));
+    //console.log("body: "+ JSON.stringify(body));
 
     return this.http.post(`${this.baseUrl}/create`, body, { headers }).pipe(
       tap(response => {
-        console.log('Create Blog Response:', response); // Log the create blog response
+        //console.log('Create Blog Response:', response); // Log the create blog response
       }),
       catchError(error => {
         console.log('Create Blog Error:', error);
