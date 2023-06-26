@@ -4,6 +4,7 @@ using SocialMediaApp.DAL.Data;
 using SocialMediaApp.DAL.Interfaces;
 using System.Net;
 using System.Linq;
+using System.Reflection.Metadata;
 
 namespace SocialMediaApp.DAL.Repositories
 {
@@ -35,6 +36,72 @@ namespace SocialMediaApp.DAL.Repositories
             };
             _dbContext.Blog.Add(blog);
             _dbContext.SaveChanges();
+        }
+
+        public void AddLike(Guid userId, Guid blogId)
+        {
+            var existingLike = _dbContext.Like.FirstOrDefault(like => like.UserId == userId && like.BlogId == blogId);
+            var blog = _dbContext.Blog.FirstOrDefault(b => b.BlogId == blogId);
+            var user = _dbContext.User.FirstOrDefault(b => b.UserId == userId);
+
+            if (existingLike != null)
+            {
+                _dbContext.Like.Remove(existingLike);
+                blog.BlogLikes -= 1;
+            }
+            else
+            {
+                Like like = new Like
+                {
+                    LikeId = Guid.NewGuid(),
+                    UserId = userId,
+                    BlogId = blogId
+                };
+                Notification notification = new Notification
+                {
+                    NotificationId = Guid.NewGuid(),
+                    NotificationDate = DateTime.Now,
+                    UserId = blog.UserId,
+                    NotificationText = user.Username + " liked your post.",
+
+                };
+                _dbContext.Notification.Add(notification);
+                _dbContext.Like.Add(like);
+                blog.BlogLikes += 1;
+            }
+            _dbContext.SaveChanges();
+        }
+
+        public void AddComment(Guid blogId, Guid userId, string username, string commentText)
+        {
+            var user = _dbContext.User.FirstOrDefault(b => b.UserId == userId);
+            var blog = _dbContext.Blog.FirstOrDefault(b => b.BlogId == blogId);
+
+            Comment comment = new Comment
+            {
+                CommentId = Guid.NewGuid(),
+                UserId = userId,
+                BlogId = blogId,
+                Username = username,
+                CommentText = commentText
+            };
+            Notification notification = new Notification
+            {
+                NotificationId = Guid.NewGuid(),
+                NotificationDate = DateTime.Now,
+                UserId = blog.UserId,
+                NotificationText = user.Username + " commented on your post.",
+
+            };
+            _dbContext.Notification.Add(notification);
+            _dbContext.Comment.Add(comment);
+            blog.BlogComments += 1;
+            _dbContext.SaveChanges();
+
+        }
+        public IEnumerable<Comment> GetComments(Guid blogId)
+        {
+            return _dbContext.Comment.Where(comment => comment.BlogId == blogId).ToList();
         }
 
     }

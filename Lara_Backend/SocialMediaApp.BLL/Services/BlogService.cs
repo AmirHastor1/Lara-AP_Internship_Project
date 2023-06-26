@@ -17,6 +17,8 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Runtime.ConstrainedExecution;
 using SocialMediaApp.DAL.Repositories;
+using System.Reflection.Metadata;
+using static System.Reflection.Metadata.BlobBuilder;
 
 
 namespace SocialMediaApp.BLL.Services
@@ -65,9 +67,28 @@ namespace SocialMediaApp.BLL.Services
             return convertedBlogs;
         }
 
+        public IEnumerable<CommentDTO> GetComments(Guid blogId)
+        {
+            var comments = _blogRepository.GetComments(blogId);
+            List<CommentDTO> convertedComments = new List<CommentDTO>();
+            convertedComments = _mapper.Map<List<CommentDTO>>(comments);
+
+            return convertedComments;
+        }
+
         public void AddNewBlog(BlogCreateDTO blog)
         {
             _blogRepository.AddNewBlog(blog.UserId, blog.BlogImage, blog.BlogDescription);
         }
+
+        public void AddLike(LikeDTO like)
+        {
+            _blogRepository.AddLike(like.UserId,like.BlogId);
+        }
+        public void AddComment(CommentDTO comment)
+        {
+            _blogRepository.AddComment(comment.BlogId, comment.UserId,comment.Username,comment.CommentText);
+        }
+        
     }
 }

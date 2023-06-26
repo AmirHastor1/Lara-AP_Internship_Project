@@ -13,5 +13,10 @@ namespace SocialMediaApp.BLL.Interfaces
         IEnumerable<BlogDTO> GetBlogs();
         IEnumerable<BlogDTO> GetUserBlogs(Guid userId);
         void AddNewBlog(BlogCreateDTO blog);
+        void AddLike(LikeDTO like);
+        void AddComment(CommentDTO comment);
+        IEnumerable<CommentDTO> GetComments(Guid blogId);
+
+
     }
 }

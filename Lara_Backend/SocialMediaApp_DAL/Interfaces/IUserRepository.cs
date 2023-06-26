@@ -12,7 +12,9 @@ namespace SocialMediaApp.DAL.Interfaces
         string GetUsernameById(Guid userId);
 
         void RegisterUser(string Username, string email, byte[] passwordHash, byte[] passwordSalt);
-        bool DoesUserExist(string email);
+        bool DoesUserExist(string email, string username);
+        bool IsValidEmail(string email);
+        bool IsValidPassword(string password);
         User? GetUser(string email);
         void InitiateToken(User user, string jwt, DateTime expiry);
         User? GetUserByJwt(string jwt);

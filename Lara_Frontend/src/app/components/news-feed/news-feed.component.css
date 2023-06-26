@@ -18,6 +18,16 @@
     display: flex;
     align-items: center;
   }
+
+  .comments-container {
+    max-height: 180px; /* Set the maximum height of the container */
+    overflow-y: auto; /* Enable vertical scrolling when the content exceeds the container height */
+  }
+  .comments {
+    padding: 10px; /* Add padding to the comments box */
+    
+  }
+  
   
   .pagination button,
   .pagination span {
@@ -155,73 +165,27 @@
     color: #2e81f4;
   }
   
-  /* story */
-  .story {
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 120px;
-    height: 200px;
-    box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.75);
-    border-radius: 10px;
-    margin-right: 10px;
-    transition: transform 100ms ease-in;
-    cursor: pointer;
-  }
   
-  .story:hover {
-    transform: scale(1.07);
-  }
-  
-  .story__avatar {
-    margin: 10px;
-    color: blue;
-  }
-  
-  .story h4 {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-  }
-  
-  .storyReel {
-    padding: 10px 0;
-    display: flex;
-  }
-  
-  .main__body {
-    display: flex;
-  }
-  
-  body {
-    background-color: #f1f2f5;
-  }
-  
-  .feed {
-    flex: 1;
-    padding: 30px 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .sidebar {
-    padding: 25px 10px;
-    flex: 0.33;
-  }
   
   /* message sender */
   
   .messageSender {
     display: flex;
+    justify-content: center;
     margin-top: 30px;
+    width: 100%;
+    background-color: purple;
+  }
+  
+  .component-container {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
-    width: 100%;
+    width: 50%;
+    padding: 0 25%;
   }
   
   .messageSender__top {
@@ -234,6 +198,16 @@
   .messageSender__top form {
     flex: 1;
     display: flex;
+  }
+  .messageSender__top form textarea {
+    height: 60px;
+    width: 100%;
+    max-width: 450px;
+    flex: 1;
+    outline-width: 0;
+    border: none;
+    padding: 15px 20px;
+    background-color: #eff2f5;
   }
   
   .messageSender__top form input {
@@ -273,15 +247,25 @@
   /* post */
   
   .post {
-    width: 100%;
+    width: 600px;
     margin-top: 15px;
     border-radius: 15px;
     background-color: white;
     box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
   }
   
+  .post__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
   .post__image img {
-    width: 100%;
+    min-height: 200px;
+    max-width: 100%;
+    max-height: 300px;
+    padding-bottom: 15px; 
   }
   .newChange{
     width: 100%;

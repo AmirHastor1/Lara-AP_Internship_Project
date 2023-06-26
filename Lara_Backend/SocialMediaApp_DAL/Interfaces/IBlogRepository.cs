@@ -12,6 +12,8 @@ namespace SocialMediaApp.DAL.Interfaces
         IEnumerable<Blog> GetBlogs();
         IEnumerable<Blog> GetUserBlogs(Guid userId);
         void AddNewBlog(Guid userId, byte[] image, string description);
-         
+        void AddLike(Guid userId, Guid blogId);
+        void AddComment(Guid blogId, Guid userId, string username, string commentText);
+        IEnumerable<Comment> GetComments(Guid blogId);
     }
 }

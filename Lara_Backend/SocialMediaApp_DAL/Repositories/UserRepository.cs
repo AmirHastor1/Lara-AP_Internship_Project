@@ -57,10 +57,29 @@ namespace SocialMediaApp.DAL.Repositories
             
         }
         //AUTHENTICATION PART
-        public bool DoesUserExist(string email)
+        public bool DoesUserExist(string email, string username)
         {
-            var user = _dbContext.User.FirstOrDefault(x => x.Email == email);
-            return user == null;
+            var emailCheck = _dbContext.User.FirstOrDefault(x => x.Email == email);
+            var userCheck = _dbContext.User.FirstOrDefault(x => x.Username == username);
+            return (emailCheck == null && userCheck == null);
+        }
+
+        public bool IsValidEmail(string email)
+        {
+            try
+            {
+                var address = new System.Net.Mail.MailAddress(email);
+                return address.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool IsValidPassword(string password)
+        {
+            return password.Length >= 5 && password.Length <= 10;
         }
 
         public User? GetUser(string email)

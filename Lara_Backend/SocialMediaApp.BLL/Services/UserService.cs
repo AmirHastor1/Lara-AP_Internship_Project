@@ -97,7 +97,11 @@ namespace SocialMediaApp.BLL.Services
 
         public void RegisterUser(UserDTO user)
         {
-            if (!_userRepository.DoesUserExist(user.Email)) throw new Exception("User already exists");
+            if (!_userRepository.DoesUserExist(user.Email,user.Username)) throw new Exception("User already exists");
+
+            if (!_userRepository.IsValidEmail(user.Email)) throw new Exception("Invalid email address");
+
+            if (!_userRepository.IsValidPassword(user.Password)) throw new Exception("Invalid password");
 
 
             CreatePasswordHash(user.Password, out byte[] passwordHash, out byte[] passwordSalt);

@@ -19,12 +19,13 @@ export class PostCreationComponent {
   ) {}
 
   postInfoDemo: BlogInfo = {
+    blogId: '',
     userId: '',
     username: '',
     blogImage: '',
     blogDescription: '',
     blogLikes: 0,
-    blogComents: 0,
+    blogComments: 0,
     blogDate: '',
   };
   cancel(): void{

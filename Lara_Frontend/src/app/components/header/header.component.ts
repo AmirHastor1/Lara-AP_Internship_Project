@@ -1,9 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { interval, Observable } from 'rxjs';
+import { interval, Observable,Subscription, take  } from 'rxjs';
 import { LoginInfo } from 'src/app/Models/login.model';
 //import { RequestService } from 'src/app/Service/request.service';
 import { LoginService } from 'src/app/Services/Login.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/Services/notification.service';
+import { NotificationInfo } from 'src/app/Models/notification.model';
+import { UserDetails } from 'src/app/Models/userDetails.model';
+
+
 
 @Component({
   selector: 'app-header',
@@ -11,6 +16,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  dropdownVisible = false;
+
+  showNotificationDropdown = false;
+  numberOfNotifications=0;
+  latestNotifications: NotificationInfo[] = [];
+  timerTime: number=0;
+  
 
 
   @Input() loginInfoForHeader : LoginInfo | undefined;
@@ -19,52 +31,94 @@ export class HeaderComponent implements OnInit {
   @Output() logoutStatusEmitter : EventEmitter<boolean> = new EventEmitter();
   @Output() searchContentEmitter : EventEmitter<LoginInfo[]> = new EventEmitter();
   token = sessionStorage.getItem('token');
+  private timerSubscription: Subscription | undefined;
+  private timerStarted = false;
 
-  constructor(private loginService: LoginService, private router: Router) { }
-  // this for calling a function multiple times
-  /*
-
-  numbers = interval(1000);
-
-  currentPage : number;
-  constructor(private requestService: RequestService) {
-    this.currentPage = 1;
-    this.requestService.getAllRequestInfo().subscribe((info) =>{
-      for (var i=0; i<info.length;i++){
-        if (info[i].requestPersonId == this.loginInfoForHeader?.id){
-          this.requestCount++;
-        }
-      }
-    });
+  constructor(private loginService: LoginService,
+     private router: Router,
+    private notificationService: NotificationService) { }
   
-    
-  }
-  */
   currentPage : number=1;
 
   ngOnInit(): void {
+    const timerTimeStr = sessionStorage.getItem('timer');
+    this.timerTime = timerTimeStr ? parseInt(timerTimeStr, 10) : 0;
+
     
+    this.loadLatestNotifications();
+    if (this.timerTime>1) {
+      this.startNotificationTimer();
+      this.timerStarted = true;
+    }
   }
 
-  homePageActive(){
-    this.currentPage = 1;
-    this.currentPageEmitter.emit(1);
+  notificationInfo: NotificationInfo = {
+    userId: '',
+    notificationDate: '',
+    notificationText: '',
+    notificationSeen: false
+  };
+
+  newsFeed(){
+    this.router.navigate(['/home']);
+  }
+  
+
+  userProfile(){    
   }
 
-  friendPageActive(){
-    this.currentPage = 2;
-    this.currentPageEmitter.emit(2);
+  toggleDropdown() {
+    this.dropdownVisible = !this.dropdownVisible;
   }
 
-  messagePageActive(){
-    this.currentPage = 3;
-    this.currentPageEmitter.emit(3);
+  toggleNotificationDropdown() {
+    this.showNotificationDropdown = !this.showNotificationDropdown;
+    if (this.showNotificationDropdown) {
+      this.loadLatestNotifications();
+    }
   }
 
-  uesrProfile(){
-    sessionStorage.setItem('userCheck',"yes");
-    this.currentPage = 4;
-    this.currentPageEmitter.emit(4);
+  loadLatestNotifications() {
+    const userDetailsString = sessionStorage.getItem('userDetails');
+    const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+    const userId = userDetails.userId;
+    this.notificationService.getLatestNotifications(userId!!)
+      .subscribe(
+        notifications => {
+          this.latestNotifications = notifications;
+          if(this.timerTime>1)
+            this.numberOfNotifications=this.latestNotifications.length;
+          
+      
+        },
+        error => {
+          console.error('Failed to retrieve notifications:', error);
+        }
+      );
+  }   
+
+  startNotificationTimer() {
+    const timer = interval(1000).pipe(take(30)); // 30-second timer
+
+    this.timerSubscription = timer.subscribe({
+      next: () => {
+        if(this.timerTime>1){
+          this.timerTime -= 1;
+        }
+        if(this.timerTime==1)
+          this.numberOfNotifications=0;
+      },
+      complete: () => {
+      }
+    });
+  }
+  ngOnDestroy(): void {
+    console.log("HEADER DESTROYED "+this.timerTime);
+    // Unsubscribe from the timer subscription when the component is destroyed
+    sessionStorage.setItem('timer',this.timerTime.toString())
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 
   logOutbuttonClicked(){

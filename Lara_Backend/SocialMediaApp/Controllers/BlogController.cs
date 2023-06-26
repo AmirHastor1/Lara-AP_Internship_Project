@@ -25,6 +25,20 @@ namespace SocialMediaApp.Controllers
             _blogService.AddNewBlog(blog);
         }
 
+        [HttpPost]
+        [Route("blog/like")]
+        public void AddLike(LikeDTO like)
+        {
+            _blogService.AddLike(like);
+        }
+
+        [HttpPost]
+        [Route("blog/comment")]
+        public void AddComment(CommentDTO comment)
+        {
+            _blogService.AddComment(comment);
+        }
+
         [HttpGet]
         [Route("all"), AllowAnonymous]
         public IEnumerable<BlogDTO> GetBlogs()
@@ -39,6 +53,13 @@ namespace SocialMediaApp.Controllers
             return _blogService.GetUserBlogs(userId);
         }
 
-        
+        [HttpGet]
+        [Route("blog/comments"), AllowAnonymous]
+        public IEnumerable<CommentDTO> GetComments(Guid blogId)
+        {
+            return _blogService.GetComments(blogId);
+        }
+
+
     }
 }

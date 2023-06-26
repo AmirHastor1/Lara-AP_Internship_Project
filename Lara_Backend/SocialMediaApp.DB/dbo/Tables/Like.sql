@@ -2,8 +2,14 @@
 create table
 	[dbo].[Like]
 (
-	[UserId] uniqueidentifier not null
+	[LikeId] uniqueidentifier not null
+	, [UserId] uniqueidentifier not null
 	, [BlogId] uniqueidentifier not null
+,
+constraint [Pk_Like_LikeId] primary key clustered
+(
+	[LikeId] asc
+)
 );
 GO
 -- Relationship Fk_User_Like_UserId

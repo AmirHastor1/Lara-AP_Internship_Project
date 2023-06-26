@@ -42,9 +42,9 @@ export class LoginComponent implements OnInit {
         // Save the JWT token for later use (e.g., in local storage)
        // this.loginSuccess.emit({ email: this.email, password: this.password });
        sessionStorage.setItem('token', token);
-        this.setUserDetails(token);
-        
+        this.setUserDetails(token);        
         console.log('Logged in successfully:', token);
+        sessionStorage.setItem('timer', '8');
         this.router.navigate(['/home']);
       },
       error => {
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
     this.password = '';
   }
   
+
   setUserDetails(jwt:string){
     this.loginService.getUserDetails(jwt)
       .subscribe(
