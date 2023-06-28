@@ -1,3 +1,13 @@
+.dark-theme {
+  background-color: #000000;
+  color: #fff;
+}
+
+.light-theme {
+  background-color: white;
+  color: black;
+}
+
 .dropbtn {
   background-color: #04AA6D;
   color: white;
@@ -54,7 +64,6 @@
     display: flex;
     justify-content: space-between;
     position: sticky;
-    background-color: white;
     z-index: 100;
     top: 0;
     box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);

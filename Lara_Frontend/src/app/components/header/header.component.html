@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" [ngClass]="darkThemeOn ? 'dark-theme' : 'light-theme'">
   <div class="header__left">
     <img src="../../../assets/images/logo.png" alt="" />
 
@@ -34,7 +34,7 @@
         <button class="dropbtn" (click)="toggleDropdown()">Notifications
           <span class="notification" *ngIf="this.numberOfNotifications!! > 0">{{ this.numberOfNotifications!! }}</span>
         </button>
-        <div class="dropdown-content" *ngIf="dropdownVisible">
+        <div class="dropdown-content" *ngIf="dropdownVisible && this.notificationsOn==true" >
           <a *ngFor="let notification of latestNotifications">
             {{ notification.notificationText }}
           </a>

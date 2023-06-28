@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NewsFeedService } from 'src/app/Services/News-Feed.service';
 import { NewsFeedItem } from 'src/app/Models/news-feed-item.model';
 import { BlogService } from 'src/app/Services/blog.service';
@@ -17,6 +17,8 @@ import { UserService } from 'src/app/Services/user.service';
   providers: [DateFormatPipe]
 })
 export class NewsFeedComponent implements OnInit {
+  @Input() refreshHeader: EventEmitter<void> = new EventEmitter<void>();
+
   infoPerson: UserDetails | undefined;
   blogItems: BlogInfo[] = [];
   blogComments: CommentInfo[] = [];
@@ -24,6 +26,8 @@ export class NewsFeedComponent implements OnInit {
   itemsPerPage: number = 4;
   totalItems: number = 0;
   fileToUploadPost: File | null = null;
+  darkThemeOn: boolean = true;
+
 
   constructor(
     private blogService: BlogService,
@@ -34,6 +38,17 @@ export class NewsFeedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const userDetailsString = sessionStorage.getItem('userDetails');
+    const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+    this.darkThemeOn= userDetails.darkTheme;
+
+    this.refreshHeader.subscribe(() => {
+      const userDetailsString = sessionStorage.getItem('userDetails');
+      const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+        this.darkThemeOn=!this.darkThemeOn;
+        console.log("Refreshed news-feed");
+    });
+
     this.route.paramMap.subscribe(params => {
       const username = params.get('username');
       if (username) {

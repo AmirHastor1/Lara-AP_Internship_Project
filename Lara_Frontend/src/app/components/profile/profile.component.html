@@ -1,4 +1,4 @@
-<main>
+<main [ngClass]="{ 'dark-theme': darkThemeOn }">
     <app-header [refreshHeader]="refreshHeader">
        
     </app-header>
@@ -9,8 +9,8 @@
       </div>
       <div id="profile-d">
 
-        <div id="profile-pic" *ngIf="this.loginInfoPerson?.profilePicture">
-            <img src="{{decodeImage(this.loginInfoPerson?.profilePicture!!)}}">
+        <div id="profile-pic" >
+            <img *ngIf="this.loginInfoPerson?.profilePicture" src="{{decodeImage(this.loginInfoPerson?.profilePicture!!)}}">
             <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="imageUpload($event)" />
             <img *ngIf="this.editVisable" src="../../../assets/images/camera2.jpg" class="second-image" (click)="triggerImageUpload()"/>
         </div>
@@ -21,21 +21,35 @@
     </div>
     <div id="main-content">
       <div class="tb">
-        <div class="td" id="l-col">
-          <div class="l-cnt">
+        <div class="td" id="l-col" >
+          <div class="l-cnt"  [ngClass]="darkThemeOn ? 'dark-theme' : 'light-theme'">
             <div class="cnt-label">
               <i class="l-i" id="l-i-i"></i>
               <span>Intro</span>
               <div class="lb-action"><i class="material-icons">edit</i></div>
             </div>
-            <div id="i-box">
+            <div id="i-box" [ngClass]="darkThemeOn ? 'dark-theme' : 'light-theme'">
               <div id="intro-line"><b>University: </b> University of Engineering & Technology</div>
               <div id="u-occ"><b>Department:</b> Computer Science & Engineering</div>
               <div id="u-loc"><a href="#">Khulna</a>, <a href="#">Bangladesh</a>
               </div>
             </div>
           </div>
-  
+            <div class="labels-row" *ngIf="this.editVisable">
+                <label class="switch">
+                    <input type="checkbox" [(ngModel)]="this.sessionUser!!.notificationsOn" (change)="toggleNotifications()">
+                    <span class="slider round"></span>
+                </label>
+                <label style="margin-left: 10px;">Toggle Notifications</label>
+            </div>
+            
+            <div class="labels-row" *ngIf="this.editVisable">
+                <label class="switch">
+                    <input type="checkbox" [(ngModel)]="this.sessionUser!!.darkTheme" (change)="toggleDarkTheme()">
+                    <span class="slider round"></span>
+                </label>
+                <label style="margin-left: 10px;">Dark Theme</label>
+            </div>
         </div>
   
         <div class="td" id="m-col">
@@ -59,7 +73,7 @@
             
             <!-- message sender ends -->
   
-           <app-news-feed></app-news-feed>
+           <app-news-feed [refreshHeader]="refreshHeader"></app-news-feed>
   
           </div>
   

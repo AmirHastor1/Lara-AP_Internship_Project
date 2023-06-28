@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   button: number = 1;
   profilePicture: string="";
   editVisable :boolean = false;
+  darkThemeOn: boolean = true;
+  notificationsOn: boolean = true;
   
   //searchResult: string;
 
@@ -42,11 +44,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const userDetailsString = sessionStorage.getItem('userDetails');
     const userDetails: UserDetails = JSON.parse(userDetailsString!!);
     this.sessionUser= userDetails;
+    this.darkThemeOn= userDetails.darkTheme;
+    this.notificationsOn= userDetails.notificationsOn;
     
     this.route.paramMap.subscribe(params => {
       const username = params.get('username');
       if (userDetails.username==username) 
         this.editVisable=true;
+      else  
+        this.editVisable=false;
+
       if (username) {
         // Call a method to load the user profile using the username
         this.loadUserProfile(username);
@@ -59,6 +66,34 @@ export class ProfileComponent implements OnInit, OnDestroy {
     console.log('PROFILE SCREEN DESTROYED');
     //this.elementRef.nativeElement.remove();
   }
+
+
+  toggleNotifications(){
+    this.sessionUser?.notificationsOn!!= !this.sessionUser?.notificationsOn;
+    this.notificationsOn = !this.notificationsOn;
+    this.updateUser();
+    this.refreshHeader.emit();
+    
+  }
+  toggleDarkTheme(){
+    this.sessionUser?.darkTheme!!= !this.sessionUser?.darkTheme;
+    this.darkThemeOn = !this.darkThemeOn;
+    this.updateUser();
+    this.refreshHeader.emit();
+  }
+
+  updateUser(){
+    this.userService.updateUser(this.sessionUser!!,this.token).subscribe(
+      () => {
+        sessionStorage.setItem('userDetails', JSON.stringify(this.sessionUser));
+        //alert('Update successful');
+      },
+      error => {
+        alert(error);
+      }
+    );
+  }
+
 
   triggerImageUpload() {
     const imageUploadInput = document.getElementById('imageUpload');
@@ -74,18 +109,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.profilePicture = event.target.result.split(',')[1];
       this.sessionUser!!.profilePicture=this.profilePicture;
 
-      this.userService.updateUser(this.sessionUser!!,this.token).subscribe(
-        () => {
-          sessionStorage.setItem('userDetails', JSON.stringify(this.sessionUser));
-          this.loginInfoPerson!.profilePicture = this.profilePicture; // Assign the updated profile picture
-          this.refreshHeader.emit();
-
-          //alert('Update successful');
-        },
-        error => {
-          alert(error);
-        }
-      );
+      this.updateUser();
+      this.loginInfoPerson!.profilePicture = this.profilePicture; // Assign the updated profile picture
+      this.refreshHeader.emit();
 
     };
     reader.readAsDataURL(event.target.files[0]);

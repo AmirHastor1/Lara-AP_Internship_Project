@@ -72,6 +72,9 @@ export class LoginComponent implements OnInit {
         }).subscribe(
           ({ userDetails }) => {
             sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
+            if(userDetails.notificationsOn==false)
+              sessionStorage.setItem('timer', '0');
+              console.log("Notifikacije upaljene")
             console.log("User DETAILS Set!");
             this.router.navigate(['/home']);
           },

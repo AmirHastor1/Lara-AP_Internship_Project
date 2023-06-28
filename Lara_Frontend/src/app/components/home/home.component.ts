@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoginInfo } from 'src/app/Models/login.model';
+import { UserDetails } from 'src/app/Models/userDetails.model';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   @Input() loginInfoForHome: LoginInfo | undefined;
   @Output() logoutStatusEmitter : EventEmitter<boolean> = new EventEmitter();
+  darkThemeOn: boolean = true;
 
   constructor() { }
 
@@ -20,6 +22,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     console.log("Home Loaded!")
     sessionStorage.setItem('userPosts',"all"); 
+
+    const userDetailsString = sessionStorage.getItem('userDetails');
+    const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+    this.darkThemeOn= userDetails.darkTheme;
 
     // this is initilization function 
   }

@@ -23,13 +23,12 @@ export class HeaderComponent implements OnInit {
   numberOfNotifications=0;
   latestNotifications: NotificationInfo[] = [];
   timerTime: number=0;
-  //@Input() refreshHeader: boolean = false;
+  darkThemeOn: boolean = true;
 
 
   @Input() loginInfoForHeader : LoginInfo | undefined;
   @Input() requestCount: number = 0;
   @Input() refreshHeader: EventEmitter<void> = new EventEmitter<void>();
-
 
   @Output() currentPageEmitter : EventEmitter<number> = new EventEmitter();
   @Output() logoutStatusEmitter : EventEmitter<boolean> = new EventEmitter();
@@ -38,7 +37,7 @@ export class HeaderComponent implements OnInit {
   private timerSubscription: Subscription | undefined;
   private timerStarted = false;
   
-  profilePicture :string="";
+  
 
   constructor(private loginService: LoginService,
   private userService: UserService,
@@ -49,12 +48,20 @@ export class HeaderComponent implements OnInit {
   currentPage : number=1;
   userId:string="";
   username:string=""
+  profilePicture :string="";
+  notificationsOn :boolean=false;
+
   ngOnInit(): void {
-    console.log("Header Loaded!")
+    
+
     document.addEventListener('click', this.onDocumentClick.bind(this));
 
     const userDetailsString = sessionStorage.getItem('userDetails');
     const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+    this.notificationsOn=userDetails.notificationsOn;
+    this.darkThemeOn=userDetails.darkTheme;
+
+    console.log("Header Loaded! Notifications: "+this.notificationsOn);
 
     this.refreshHeader.subscribe(() => {
       //Update profile picture when user changes it in profile screen
@@ -62,6 +69,9 @@ export class HeaderComponent implements OnInit {
       const userDetails: UserDetails = JSON.parse(userDetailsString!!);
       if(userDetails.profilePicture)
         this.profilePicture=userDetails.profilePicture
+        
+        this.notificationsOn=!this.notificationsOn;
+        this.darkThemeOn=!this.darkThemeOn;
     });
 
     if(userDetails)
@@ -91,8 +101,6 @@ export class HeaderComponent implements OnInit {
   newsFeed(){
     this.router.navigate(['/home']);
   }
-  
- 
 
   userProfile(){
     sessionStorage.setItem('userPosts',this.userId); 
@@ -100,7 +108,9 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleDropdown() {
-    this.dropdownVisible = !this.dropdownVisible;
+    console.log("notifications: "+this.notificationsOn);
+    if(this.notificationsOn==true)
+      this.dropdownVisible = !this.dropdownVisible;
   }
   toggleSearchDropdown() {
     this.searchDropdownVisible = !this.searchDropdownVisible;

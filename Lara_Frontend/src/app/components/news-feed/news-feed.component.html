@@ -1,61 +1,13 @@
-<div class="messageSender">
-  <div class="component-container">
-    <div class="messageSender__top">
-      <button routerLink="create-post" style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer; width: 150px;" (click)="createAPost()">Create a Post</button>
-    </div>
-    <div *ngIf="blogItems.length > 0">
-      <div *ngFor="let item of blogItems">
-        <div *ngIf="item.blogImage !== 'string'; else other_content">
-          <div class="post">
-            <div class="post__top">
-              <img class="user__avatar post__avatar" [src]="decodeImage(item.blogImage)" alt="" />
-              <div class="post__topInfo">
-                <h3>{{ item.username }}</h3>
-                <p>{{ item.blogDate | date: 'dd-MM-yyyy' }}</p>
-              </div>
-            </div>
-
-            <div class="post__bottom">
-              <p>{{ item.blogDescription  }}</p>
-            </div>
-
-            <div class="post__image">
-              <img [src]="decodeImage(item.blogImage)" alt="Blog Image" class="blog-image">
-            </div>
-
-            <div class="post__options">
-              <div class="post__option" (click)="likeUpdate(item)">
-                <span class="material-icons">{{ item.blogLikes }} Like</span>
-              </div>
-
-              <div class="post__option" (click)="getComments(item.blogId)">
-                <span class="material-icons">{{ item.blogComments }} Comment</span>
-              </div>
-
-            </div>
-            <div *ngIf="selectedBlogId === item.blogId">
-              <div class="messageSender__top">
-                <form>
-                    <textarea class="messageSender__input" placeholder="Write a Comment" name="postInfoDemo.postMessage" [(ngModel)]="postInfoDemo.blogDescription"></textarea>
-                </form>
-                <button style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer; width: 100px;" (click)="addComment(item.blogId)">Save</button>
-
-            </div>
-              <div class="comments-container" *ngIf="blogComments && blogComments.length > 0">
-                <div class="comments-box">
-                  <div class="comments" *ngFor="let comment of blogComments">
-                    <p>{{ comment.username }}: {{ comment.commentText }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      
-        <ng-template #other_content>
-          <div class="newChange">
-            <div class="post">
+<main>
+  <div class="messageSender">
+    <div class="component-container"  [ngClass]="darkThemeOn ? 'dark-theme' : 'light-theme'">
+      <div class="messageSender__top" >
+        <button routerLink="create-post" style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer; width: 150px;" (click)="createAPost()">Create a Post</button>
+      </div>
+      <div *ngIf="blogItems.length > 0" >
+        <div *ngFor="let item of blogItems">
+          <div *ngIf="item.blogImage !== 'string'; else other_content">
+            <div class="post" [ngClass]="darkThemeOn ? 'dark-theme' : 'light-theme'">
               <div class="post__top">
                 <img class="user__avatar post__avatar" [src]="decodeImage(item.blogImage)" alt="" />
                 <div class="post__topInfo">
@@ -65,45 +17,95 @@
               </div>
 
               <div class="post__bottom">
-                <p>{{ item.blogDescription }}</p>
+                <p>{{ item.blogDescription  }}</p>
               </div>
 
-              <div class="likesNumber">
-                <p>{{ item.blogLikes }} person like</p>
+              <div class="post__image">
+                <img [src]="decodeImage(item.blogImage)" alt="Blog Image" class="blog-image">
               </div>
 
               <div class="post__options">
                 <div class="post__option" (click)="likeUpdate(item)">
-                  <span class="material-icons">Like</span>
+                  <span class="material-icons">{{ item.blogLikes }} Like</span>
                 </div>
 
                 <div class="post__option" (click)="getComments(item.blogId)">
-                  <span class="material-icons">chat_bubble_outline</span>
+                  <span class="material-icons">{{ item.blogComments }} Comment</span>
                 </div>
 
-                <div class="post__option">
-                  <span class="material-icons">near_me</span>
-                  <p>Share</p>
+              </div>
+              <div *ngIf="selectedBlogId === item.blogId">
+                <div class="messageSender__top">
+                  <form>
+                      <textarea class="messageSender__input" placeholder="Write a Comment" name="postInfoDemo.postMessage" [(ngModel)]="postInfoDemo.blogDescription"></textarea>
+                  </form>
+                  <button style="background-color: turquoise; border: none; border-radius: 10px; color: #333; padding: 15px 32px; cursor: pointer; width: 100px;" (click)="addComment(item.blogId)">Save</button>
+
+              </div>
+                <div class="comments-container" *ngIf="blogComments && blogComments.length > 0">
+                  <div class="comments-box">
+                    <div class="comments" *ngFor="let comment of blogComments">
+                      <p>{{ comment.username }}: {{ comment.commentText }}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            
           </div>
-        </ng-template>
-      </div>
-      <div class="pagination-container">
-          <div class="pagination">
-            <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
-            <span>{{ currentPage }}</span>
-            <button [disabled]="currentPage * itemsPerPage >= totalItems" (click)="onPageChange(currentPage + 1)">Next</button>
-          </div>
+        
+          <ng-template #other_content>
+            <div class="newChange">
+              <div class="post">
+                <div class="post__top">
+                  <img class="user__avatar post__avatar" [src]="decodeImage(item.blogImage)" alt="" />
+                  <div class="post__topInfo">
+                    <h3>{{ item.username }}</h3>
+                    <p>{{ item.blogDate | date: 'dd-MM-yyyy' }}</p>
+                  </div>
+                </div>
+
+                <div class="post__bottom">
+                  <p>{{ item.blogDescription }}</p>
+                </div>
+
+                <div class="likesNumber">
+                  <p>{{ item.blogLikes }} person like</p>
+                </div>
+
+                <div class="post__options">
+                  <div class="post__option" (click)="likeUpdate(item)">
+                    <span class="material-icons">Like</span>
+                  </div>
+
+                  <div class="post__option" (click)="getComments(item.blogId)">
+                    <span class="material-icons">chat_bubble_outline</span>
+                  </div>
+
+                  <div class="post__option">
+                    <span class="material-icons">near_me</span>
+                    <p>Share</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         </div>
+        <div class="pagination-container">
+            <div class="pagination">
+              <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
+              <span>{{ currentPage }}</span>
+              <button [disabled]="currentPage * itemsPerPage >= totalItems" (click)="onPageChange(currentPage + 1)">Next</button>
+            </div>
+          </div>
 
-    </div>
+      </div>
 
-    <div class="post" *ngIf="blogItems.length === 0">
-      <div class="post__image">
-        <img src="../../../assets/images/no_post_found.jpg" alt="" />
+      <div class="post" *ngIf="blogItems.length === 0">
+        <div class="post__image">
+          <img src="../../../assets/images/no_post_found.jpg" alt="" />
+        </div>
       </div>
     </div>
   </div>
-</div>
+</main>
