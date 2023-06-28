@@ -219,6 +219,8 @@
   }
   
   #profile-pic {
+    position: relative;
+
     background-color: black;
     width: 180px;
     height: 180px;
@@ -229,6 +231,17 @@
     display: flex;
   align-items: center;
   justify-content: center;
+  }
+
+  #profile-pic .second-image {
+    opacity: 0.4; 
+    filter: brightness(2); 
+    cursor: pointer; 
+    width: 45px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
   }
   
   #profile-pic img {

@@ -31,5 +31,20 @@ export class UserService {
     );
   }
 
-  
+    updateUser(user: UserDetails,token: string): Observable<any> {
+        const headers = new HttpHeaders({
+            'Authorization': 'bearer ' + token
+        });
+
+        return this.http.post(`${this.baseUrl}/user/update`, user, { headers }).pipe(
+            tap(response => {
+                console.log('User successfully updated!');
+            }),
+            catchError(error => {
+                console.log('User update Error:', error);
+                return throwError('Failed to update user.');
+            })
+        );
+    }
+
 }

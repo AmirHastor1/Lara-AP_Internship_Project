@@ -1,16 +1,21 @@
 <main>
-    <app-header></app-header>
+    <app-header [refreshHeader]="refreshHeader">
+       
+    </app-header>
     <div id="profile-upper">
       <div id="profile-banner-image">
         <img *ngIf="demoCode==0"  alt="Banner image">
         <img *ngIf="demoCode==1"  alt="Banner image">
       </div>
       <div id="profile-d">
+
         <div id="profile-pic" *ngIf="this.loginInfoPerson?.profilePicture">
-          <img src="{{decodeImage(this.loginInfoPerson?.profilePicture!!)}}">
+            <img src="{{decodeImage(this.loginInfoPerson?.profilePicture!!)}}">
+            <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="imageUpload($event)" />
+            <img *ngIf="this.editVisable" src="../../../assets/images/camera2.jpg" class="second-image" (click)="triggerImageUpload()"/>
         </div>
+
         <div id="u-name">{{this.loginInfoPerson?.username}}</div>
-        
       </div>
       <div id="black-grd"></div>
     </div>
@@ -66,4 +71,4 @@
       </div>
     </div>
   
-  </main>
+</main>

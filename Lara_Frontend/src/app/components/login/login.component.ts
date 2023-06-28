@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.email, this.password).subscribe(
       token => {
         sessionStorage.setItem('token', token);
-        sessionStorage.setItem('timer', '8');
+        sessionStorage.setItem('timer', '30');
         sessionStorage.setItem('userPosts','all');
 
         this.setUserDetails(token);

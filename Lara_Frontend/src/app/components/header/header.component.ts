@@ -8,7 +8,6 @@ import { NotificationService } from 'src/app/Services/notification.service';
 import { NotificationInfo } from 'src/app/Models/notification.model';
 import { UserDetails } from 'src/app/Models/userDetails.model';
 import { UserService } from 'src/app/Services/user.service';
-//import { ProfileComponent } from 'src/app/components/profile/profile.component';
 
 
 @Component({
@@ -24,10 +23,14 @@ export class HeaderComponent implements OnInit {
   numberOfNotifications=0;
   latestNotifications: NotificationInfo[] = [];
   timerTime: number=0;
+  //@Input() refreshHeader: boolean = false;
 
 
   @Input() loginInfoForHeader : LoginInfo | undefined;
   @Input() requestCount: number = 0;
+  @Input() refreshHeader: EventEmitter<void> = new EventEmitter<void>();
+
+
   @Output() currentPageEmitter : EventEmitter<number> = new EventEmitter();
   @Output() logoutStatusEmitter : EventEmitter<boolean> = new EventEmitter();
   @Output() searchContentEmitter : EventEmitter<string> = new EventEmitter();
@@ -48,8 +51,19 @@ export class HeaderComponent implements OnInit {
   username:string=""
   ngOnInit(): void {
     console.log("Header Loaded!")
+    document.addEventListener('click', this.onDocumentClick.bind(this));
+
     const userDetailsString = sessionStorage.getItem('userDetails');
     const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+
+    this.refreshHeader.subscribe(() => {
+      //Update profile picture when user changes it in profile screen
+      const userDetailsString = sessionStorage.getItem('userDetails');
+      const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+      if(userDetails.profilePicture)
+        this.profilePicture=userDetails.profilePicture
+    });
+
     if(userDetails)
       this.profilePicture = userDetails.profilePicture || '';
     this.userId=userDetails.userId;
@@ -78,12 +92,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/home']);
   }
   
+ 
 
   userProfile(){
     sessionStorage.setItem('userPosts',this.userId); 
     this.router.navigate(['/profile', this.username]);
-
-
   }
 
   toggleDropdown() {
@@ -144,6 +157,9 @@ export class HeaderComponent implements OnInit {
   }
   ngOnDestroy(): void {
     console.log("HEADER DESTROYED "+this.timerTime);
+    // Unsubscribe from the onDocumentClick
+    document.removeEventListener('click', this.onDocumentClick.bind(this));
+
     // Unsubscribe from the timer subscription when the component is destroyed
     sessionStorage.setItem('timer',this.timerTime.toString())
     if (this.timerSubscription) {
@@ -188,7 +204,7 @@ export class HeaderComponent implements OnInit {
             sessionStorage.setItem('userSearchResult', JSON.stringify(userDetails));
             sessionStorage.setItem('ProfileType', 'searchResult');
             sessionStorage.setItem('userPosts', userDetails.userId)
-            //if(!this.searchDropdownVisible)
+            if(!this.searchDropdownVisible)
               this.toggleSearchDropdown();
           } else {
             console.log('User not found.');
@@ -208,6 +224,15 @@ export class HeaderComponent implements OnInit {
     //} else {
     //  this.router.navigate(['/profile']);
     //}
+  }
+
+  //dropdown will disappear when user click away from it
+  onDocumentClick(event: Event): void {
+    const target = event.target as HTMLElement;
+      if (!target.closest('.dropdown')) {
+      this.dropdownVisible = false;
+      this.searchDropdownVisible = false;
+    }
   }
 
 

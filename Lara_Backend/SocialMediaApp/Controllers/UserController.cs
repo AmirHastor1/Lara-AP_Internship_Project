@@ -87,12 +87,13 @@ namespace SocialMediaApp.Controllers
         //NON AUTHENTICATION PART
         // GET: api/<MemberController>
         [HttpGet]
+        [Route("all"), AllowAnonymous]
         public IEnumerable<UserDTO> GetUsers()
         {
             return _userService.GetUsers();
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("{userId}"), AllowAnonymous]
         public UserDTO Get(Guid userId)
         {
             if (userId == Guid.Empty)
@@ -108,10 +109,5 @@ namespace SocialMediaApp.Controllers
             //return _userService.AddNewUser(newUser.FirstName, newUser.LastName, newUser.Email);
         }
         */
-        [HttpDelete("{userId}")]
-        public void Delete(Guid userId)
-        {
-            _userService.DeleteUser(userId);
-        }
     }
 }

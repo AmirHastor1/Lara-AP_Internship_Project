@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit,EventEmitter,Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogInfo } from 'src/app/Models/blog.model';
 import { UserDetails } from 'src/app/Models/userDetails.model';
@@ -12,12 +12,20 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+  @Output() refreshHeader: EventEmitter<void> = new EventEmitter<void>();
+
+  token:string ="";
+  sessionUser: UserDetails | undefined;
   loginInfoPerson: UserDetails | undefined;
   blogItems: BlogInfo[] = [];
   postInfoOfUser: BlogInfo[] = [];
+  fileToUploadPost: File | null = null;
   message: string = "What's on your mind?";
   demoCode: number = 0;
   button: number = 1;
+  profilePicture: string="";
+  editVisable :boolean = false;
+  
   //searchResult: string;
 
   constructor(
@@ -28,30 +36,59 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private blogService: BlogService
   ) {}
 
-  ngOnInit(): void {/*
+  ngOnInit(): void {
+    
+    this.token= sessionStorage.getItem('token')!!;
     const userDetailsString = sessionStorage.getItem('userDetails');
     const userDetails: UserDetails = JSON.parse(userDetailsString!!);
-    if (userDetails) {
-      this.loginInfoPerson = userDetails;
-    }*/
-
+    this.sessionUser= userDetails;
+    
     this.route.paramMap.subscribe(params => {
       const username = params.get('username');
+      if (userDetails.username==username) 
+        this.editVisable=true;
       if (username) {
         // Call a method to load the user profile using the username
         this.loadUserProfile(username);
       }
     });
-
-    // ...
-    // Rest of your code
-    // ...
   }
 
   ngOnDestroy() {
     sessionStorage.setItem('ProfileType', '');
     console.log('PROFILE SCREEN DESTROYED');
     //this.elementRef.nativeElement.remove();
+  }
+
+  triggerImageUpload() {
+    const imageUploadInput = document.getElementById('imageUpload');
+    if (imageUploadInput) {
+      imageUploadInput.click();
+    }
+  }
+
+  imageUpload(event: any): void {
+    this.fileToUploadPost = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.profilePicture = event.target.result.split(',')[1];
+      this.sessionUser!!.profilePicture=this.profilePicture;
+
+      this.userService.updateUser(this.sessionUser!!,this.token).subscribe(
+        () => {
+          sessionStorage.setItem('userDetails', JSON.stringify(this.sessionUser));
+          this.loginInfoPerson!.profilePicture = this.profilePicture; // Assign the updated profile picture
+          this.refreshHeader.emit();
+
+          //alert('Update successful');
+        },
+        error => {
+          alert(error);
+        }
+      );
+
+    };
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   showFriendList() {

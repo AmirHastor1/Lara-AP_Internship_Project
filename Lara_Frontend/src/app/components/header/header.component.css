@@ -108,7 +108,6 @@
   }
   
   .header__option.active {
-    border-bottom: 4px solid #2e81f4;
     margin: 5px;
   }
   
