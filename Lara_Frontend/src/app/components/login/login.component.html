@@ -1,6 +1,5 @@
 <div class="mainBody">
   
-
   <div *ngIf="registerCheck;else other_content">
     <div class="clolor_opacity"></div>
     <div class="headerLoginText"><h1 class="textColorDesign">Login</h1></div>
@@ -26,7 +25,7 @@
       <button class="loginButtonMain" (click)="loginButtonMain()">Login</button>
     </div>
 
-    <div class="needNewAccount" (click)="registerButton()">Need New Account? <b style="color: aqua;">Sign Up </b></div>
+    <div class="needNewAccount" (click)="registerButton()">Need New Account? <b style="color: rgb(255, 255, 255);">Sign Up </b></div>
   </div>
 
   <ng-template #other_content>
@@ -64,7 +63,7 @@
         <div class="Fields">
           <div class="Fieldset">
             <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="handlerFileInputPost($event)" />
-            <label for="imageUpload" style="color: green" class="material-icons">Add Profile Picture</label>
+            <label for="imageUpload" style="cursor: pointer; color: rgb(255, 255, 255)" class="material-icons">Add Profile Picture</label>
           </div>
         </div>
 
@@ -72,7 +71,7 @@
       <button class="RegisterButtonMain" (click)="registerButtonMain()">Register</button>
     </div>
 
-    <div class="needNewAccountRegister" (click)="loginButton()">Already Have an Account? <b style="color: aqua;">Login </b></div>
+    <div class="needNewAccountRegister" (click)="loginButton()">Already Have an Account? <b style="color: rgb(212, 198, 198);"> </b></div>
   </ng-template>
 
 

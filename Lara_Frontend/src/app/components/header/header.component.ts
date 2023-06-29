@@ -29,6 +29,9 @@ export class HeaderComponent implements OnInit {
   @Input() loginInfoForHeader : LoginInfo | undefined;
   @Input() requestCount: number = 0;
   @Input() refreshHeader: EventEmitter<void> = new EventEmitter<void>();
+  @Input() refreshColor: EventEmitter<void> = new EventEmitter<void>();
+  @Input() refreshNotifications: EventEmitter<void> = new EventEmitter<void>();
+
 
   @Output() currentPageEmitter : EventEmitter<number> = new EventEmitter();
   @Output() logoutStatusEmitter : EventEmitter<boolean> = new EventEmitter();
@@ -63,15 +66,19 @@ export class HeaderComponent implements OnInit {
 
     console.log("Header Loaded! Notifications: "+this.notificationsOn);
 
+    this.refreshColor.subscribe(() => {
+        this.darkThemeOn=!this.darkThemeOn;
+    });
+    this.refreshNotifications.subscribe(() => {
+      this.notificationsOn=!this.notificationsOn;
+    });
     this.refreshHeader.subscribe(() => {
       //Update profile picture when user changes it in profile screen
       const userDetailsString = sessionStorage.getItem('userDetails');
       const userDetails: UserDetails = JSON.parse(userDetailsString!!);
+      
       if(userDetails.profilePicture)
         this.profilePicture=userDetails.profilePicture
-        
-        this.notificationsOn=!this.notificationsOn;
-        this.darkThemeOn=!this.darkThemeOn;
     });
 
     if(userDetails)

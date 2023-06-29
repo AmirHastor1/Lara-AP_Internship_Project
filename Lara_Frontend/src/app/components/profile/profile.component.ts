@@ -13,6 +13,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   @Output() refreshHeader: EventEmitter<void> = new EventEmitter<void>();
+  @Output() refreshNotifications: EventEmitter<void> = new EventEmitter<void>();
+  @Output() refreshColor: EventEmitter<void> = new EventEmitter<void>();
 
   token:string ="";
   sessionUser: UserDetails | undefined;
@@ -72,14 +74,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.sessionUser?.notificationsOn!!= !this.sessionUser?.notificationsOn;
     this.notificationsOn = !this.notificationsOn;
     this.updateUser();
-    this.refreshHeader.emit();
+    this.refreshNotifications.emit();
     
   }
   toggleDarkTheme(){
     this.sessionUser?.darkTheme!!= !this.sessionUser?.darkTheme;
     this.darkThemeOn = !this.darkThemeOn;
     this.updateUser();
-    this.refreshHeader.emit();
+    this.refreshColor.emit();
   }
 
   updateUser(){
@@ -109,9 +111,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.profilePicture = event.target.result.split(',')[1];
       this.sessionUser!!.profilePicture=this.profilePicture;
 
-      this.updateUser();
-      this.loginInfoPerson!.profilePicture = this.profilePicture; // Assign the updated profile picture
-      this.refreshHeader.emit();
+      this.userService.updateUser(this.sessionUser!!,this.token).subscribe(
+        () => {
+          sessionStorage.setItem('userDetails', JSON.stringify(this.sessionUser));
+          this.loginInfoPerson!.profilePicture = this.profilePicture; // Assign the updated profile picture
+          this.refreshHeader.emit();
+          },
+        error => {
+          alert(error);
+        }
+      );
+      
 
     };
     reader.readAsDataURL(event.target.files[0]);

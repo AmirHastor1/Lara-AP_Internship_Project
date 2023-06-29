@@ -17,7 +17,7 @@ import { UserService } from 'src/app/Services/user.service';
   providers: [DateFormatPipe]
 })
 export class NewsFeedComponent implements OnInit {
-  @Input() refreshHeader: EventEmitter<void> = new EventEmitter<void>();
+  @Input() refreshColor: EventEmitter<void> = new EventEmitter<void>();
 
   infoPerson: UserDetails | undefined;
   blogItems: BlogInfo[] = [];
@@ -42,11 +42,11 @@ export class NewsFeedComponent implements OnInit {
     const userDetails: UserDetails = JSON.parse(userDetailsString!!);
     this.darkThemeOn= userDetails.darkTheme;
 
-    this.refreshHeader.subscribe(() => {
+    this.refreshColor.subscribe(() => {
       const userDetailsString = sessionStorage.getItem('userDetails');
       const userDetails: UserDetails = JSON.parse(userDetailsString!!);
         this.darkThemeOn=!this.darkThemeOn;
-        console.log("Refreshed news-feed");
+        console.log("Refreshed news-feed color");
     });
 
     this.route.paramMap.subscribe(params => {

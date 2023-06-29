@@ -1,5 +1,5 @@
 <main [ngClass]="{ 'dark-theme': darkThemeOn }">
-    <app-header [refreshHeader]="refreshHeader">
+    <app-header [refreshHeader]="refreshHeader" [refreshColor]="refreshColor" [refreshNotifications]="refreshNotifications" >
        
     </app-header>
     <div id="profile-upper">
@@ -73,7 +73,7 @@
             
             <!-- message sender ends -->
   
-           <app-news-feed [refreshHeader]="refreshHeader"></app-news-feed>
+           <app-news-feed [refreshColor]="refreshColor"></app-news-feed>
   
           </div>
   
