@@ -1,4 +1,6 @@
 # Lara-AP_Internship_Project!\
+This website was built from stratch using Angular as a frontend frameworks, and .NET for the backend part of the application
+
 API\
 ![sagger](https://github.com/AmirHastor1/Lara-AP_Internship_Project/assets/125800416/a2da9b87-8f40-4db3-83a4-c181dd7e5613)\
 DB Model\
